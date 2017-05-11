@@ -9,21 +9,24 @@ import com.yourpc.entity.Category;
 import com.yourpc.entity.Item;
 
 @Repository
-public class ItemDaoImpl extends GenericDaoImpl<Item, Integer> implements ItemDao
+public class ItemDaoImpl extends GenericDaoImpl<Item, String> implements ItemDao
 {
 	
-	public ItemDaoImpl() {
+	public ItemDaoImpl() 
+	{
 		super(Item.class);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Transactional
+	@Override
 	public void addCategoyToItem(Category category, Item item)
 	{
 		item.setCategory(category);
+		getEntityManager().merge(item);
 	}
 	
 	@Transactional
+	@Override
 	public void addBillableToItem(Billable billable, Item item) 
 	{
 		item.getBillable().add(billable);

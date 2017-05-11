@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yourpc.dao.GenericDao;
 @Repository
-public class GenericDaoImpl<T, K> implements GenericDao<T, K>
+public abstract class GenericDaoImpl<T, K> implements GenericDao<T, K>
 {
 	protected Class<T> entityClass;
 	
@@ -44,20 +44,23 @@ public class GenericDaoImpl<T, K> implements GenericDao<T, K>
 		this.entityClass = entityClass;
 	}
 
+	@Override
 	@Transactional
 	public T add(T entity) 
 	{
 		entityManager.persist(entity);
 		return entity;
 	}
-
+	
+	@Override
 	@Transactional
 	public T update(T entity) 
 	{
 		entityManager.merge(entity);
 		return entity;
 	}
-
+	
+	@Override
 	@Transactional
 	public void delete(K fieldName, K fieldValue) 
 	{
@@ -65,8 +68,9 @@ public class GenericDaoImpl<T, K> implements GenericDao<T, K>
 		entityManager.remove(entity);
 	}
 
-	@SuppressWarnings("unchecked")
+	@Override
 	@Transactional
+	@SuppressWarnings("unchecked")
 	public T getOne(K fieldName, K fieldValue) 
 	{
 		return  (T) entityManager
@@ -75,8 +79,9 @@ public class GenericDaoImpl<T, K> implements GenericDao<T, K>
 				.getSingleResult();
 	}
 
-	@SuppressWarnings("unchecked")
+	@Override
 	@Transactional
+	@SuppressWarnings("unchecked")
 	public List<T> getAll()
 	{
 		return entityManager

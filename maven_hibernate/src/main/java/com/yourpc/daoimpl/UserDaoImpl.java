@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.yourpc.dao.UserDao;
 import com.yourpc.entity.Billable;
+import com.yourpc.entity.Role;
 import com.yourpc.entity.User;
 
 @Repository
@@ -21,6 +22,7 @@ public class UserDaoImpl extends GenericDaoImpl<User, String> implements UserDao
 	}
 
 	@Transactional
+	@Override
 	public String validate(String name, String password) 
 	{
 		String flag = "Failure";
@@ -63,5 +65,21 @@ public class UserDaoImpl extends GenericDaoImpl<User, String> implements UserDao
 			getEntityManager().merge(billable);
 		}
 		super.delete(fieldName, fieldValue);
+	}
+
+	@Transactional
+	@Override
+	public void addRoleToUser(User user, Role role) 
+	{
+		user.setRole(role);
+		getEntityManager().merge(user);
+	}
+
+	@Transactional
+	@Override
+	public void addBillableToUser(User user, Billable billable) 
+	{
+		billable.setUser(user);
+		getEntityManager().merge(billable);
 	}
 }

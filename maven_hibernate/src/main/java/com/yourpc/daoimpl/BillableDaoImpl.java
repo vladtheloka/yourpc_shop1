@@ -9,20 +9,23 @@ import com.yourpc.entity.Item;
 import com.yourpc.entity.User;
 
 @Repository
-public class BillableDaoImpl extends GenericDaoImpl<Billable, Integer> implements BillableDao 
+public class BillableDaoImpl extends GenericDaoImpl<Billable, String> implements BillableDao 
 {
-	public BillableDaoImpl() {
+	public BillableDaoImpl() 
+	{
 		super(Billable.class);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Transactional
+	@Override
 	public void addUserToBillable(User user, Billable billable) 
 	{
 		billable.setUser(user);
+		getEntityManager().merge(billable);
 	}
 
 	@Transactional
+	@Override
 	public void addBillableToItem(Item item, Billable billable)
 	{
 		billable.getItem().add(item);
