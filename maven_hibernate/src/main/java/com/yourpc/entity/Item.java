@@ -1,6 +1,7 @@
 package com.yourpc.entity;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -110,6 +111,7 @@ public class Item extends AbstractEntity
 	@Override
 	public String toString() 
 	{
-		return "Item [name=" + name + ", content=" + content + ", price=" + price + "]";
-	}	
+		return "Item [name=" + name + ", content=" + content + ", price=" + price + ", image=" + Arrays.toString(image)
+				+ ", category=" + category + ", billable=" + billable + "]";
+	}
 }

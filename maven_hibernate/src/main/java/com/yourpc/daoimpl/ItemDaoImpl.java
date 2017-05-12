@@ -32,4 +32,22 @@ public class ItemDaoImpl extends GenericDaoImpl<Item, String> implements ItemDao
 		item.getBillable().add(billable);
 		getEntityManager().merge(item);
 	}
+
+	@Transactional
+	@Override
+	public Item getItemWithBillables(String itemName)
+	{
+		return (Item) getEntityManager()
+				.createQuery("select i from Item i left join fetch i.billable where i.name =:name")
+				.setParameter("name", itemName)
+				.getSingleResult();
+	}
+
+	@Transactional
+	@Override
+	public void removeCategoryFromItem(Item item) 
+	{
+		item.setCategory(null);
+		getEntityManager().merge(item);
+	}
 }

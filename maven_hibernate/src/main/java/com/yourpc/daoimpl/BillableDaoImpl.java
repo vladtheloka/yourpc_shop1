@@ -31,4 +31,20 @@ public class BillableDaoImpl extends GenericDaoImpl<Billable, String> implements
 		billable.getItem().add(item);
 		getEntityManager().merge(billable);
 	}
+
+	@Override
+	public Billable getBillablewithItems(String billableName)
+	{
+		return (Billable) getEntityManager()
+				.createQuery("select b from Billable b left join fetch b.item wher b.name =:name")
+				.getSingleResult();
+	}
+
+	@Transactional
+	@Override
+	public void removeUserFromBillable(Billable billable) 
+	{
+		billable.setUser(null);
+		getEntityManager().merge(billable);
+	}
 }

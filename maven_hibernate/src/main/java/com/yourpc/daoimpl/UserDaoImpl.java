@@ -77,9 +77,9 @@ public class UserDaoImpl extends GenericDaoImpl<User, String> implements UserDao
 
 	@Transactional
 	@Override
-	public void addBillableToUser(User user, Billable billable) 
+	public void removeRoleFromUser(User user) 
 	{
-		billable.setUser(user);
-		getEntityManager().merge(billable);
+		user.setRole(null);
+		getEntityManager().merge(user);
 	}
 }

@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.yourpc.dao.GenericDao;
 import com.yourpc.dao.UserDao;
-import com.yourpc.entity.Billable;
 import com.yourpc.entity.Role;
 import com.yourpc.entity.User;
 import com.yourpc.service.UserService;
@@ -35,10 +34,10 @@ public class UserServiceImpl extends GenericServiceImpl<User, String> implements
 	{
 		userDao.addRoleToUser(user, role);
 	}
-	
+
 	@Override
-	public void addBillableToUser(User user, Billable billable) 
+	public void removeRoleFromUser(User user)
 	{
-		userDao.addBillableToUser(user, billable);
+		userDao.removeRoleFromUser(user);	
 	}
 }

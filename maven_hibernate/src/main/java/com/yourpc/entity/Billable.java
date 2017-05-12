@@ -82,6 +82,6 @@ public class Billable extends AbstractEntity
 	@Override
 	public String toString() 
 	{
-		return "Billable [name=" + name + ", address=" + address + "]";
+		return "Billable [name=" + name + ", address=" + address + ", user=" + user + ", item=" + item + "]";
 	}
 }
