@@ -30,14 +30,25 @@ public class WelcomeController extends HttpServlet
 		UserService userService = (UserService) context.getBean("userServiceImpl");
 		
 		List<User> users = userService.getAll();
-		String allUsers = "";
+		String userID = "";
+		String userName = "";
+		String userEmail = "";
+		String userPass = "";
+		String userAddress = "";
 		
 		for (User user : users) 
 		{
-			allUsers += user.toString() + "<br>";
+			userID += Integer.toString(user.getId())+ "<br>";
+			userName += user.getName() + "<br>";
+			userEmail += user.getEmail() + "<br>";
+			userPass += user.getPassword() + "<br>";
+			userAddress += user.getAddress() + "<br>";
 		}
-		
-		req.setAttribute("allUsers", allUsers);
+		req.setAttribute("userid", userID);
+		req.setAttribute("username", userName);
+		req.setAttribute("useremail", userEmail);
+		req.setAttribute("userpass", userPass);
+		req.setAttribute("useraddress", userAddress);
 		req.getRequestDispatcher("welcome.jsp").forward(req, resp);
 	}
 }

@@ -6,6 +6,6 @@ import com.yourpc.entity.User;
 
 public interface UserDao extends JpaRepository<User, Integer>
 {
-	User findByName(String name);
+	User findByNameAndPassword(String name, String password);
 	void deleteByName(String name);
 }

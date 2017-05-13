@@ -10,6 +10,25 @@
 <h1 style="text-align: center;">welcome</h1>
 <a href="newUser">new user</a>
 <br>
-${allUsers}
+<table border=1>
+ <thead>
+ <tr>
+ <th>ID</th>
+ <th>Name</th>
+ <th>Email</th>
+ <th>Password</th>
+ <th>Address</th>
+ </tr>
+ </thead>
+ <tbody>
+ <tr>
+ <td>${userid}</td>
+ <td>${username}</td>
+ <td>${useremail}</td>
+ <td>${userpass}</td>
+ <td>${useraddress}</td>
+ </tr>
+ </tbody>
+ </table>
 </body>
 </html>

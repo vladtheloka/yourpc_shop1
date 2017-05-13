@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE HTML>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -9,15 +9,15 @@
 <body>
 <div style="text-align: center; margin-top: 10%">
 	<form action="newUser" method="post">
-		<input type="text" name="username">
+		Name:<input type="text" placeholder="Enter your name" name="username">
 		<br>
-		<input type="email" name="useremail">
+		Email:<input type="email" placeholder="Enter email" name="useremail">
 		<br>
-		<input type="password" name="userpassword">
+		Password:<input type="password" placeholder="Enter password" name="userpassword">
 		<br>
-		<input type="text" name="useraddress">
+		Address:<input type="text" placeholder="Enter address" name="useraddress">
 		<br>
-		<button>save user</button>	
+		<button>Submit</button>	
 	</form>
 </div>
 </body>
