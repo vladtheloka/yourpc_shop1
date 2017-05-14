@@ -2,8 +2,6 @@
 <classpath>
 	<classpathentry kind="src" path=""/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="E:/Workspace/population_chart/jsoup-1.10.2.jar"/>
-	<classpathentry kind="lib" path="E:/Workspace/population_chart/commons-lang3-3.5.jar"/>
 	<classpathentry kind="lib" path="E:/Workspace/commit/population_chart/jsoup-1.10.2.jar"/>
 	<classpathentry kind="output" path=""/>
 </classpath>
