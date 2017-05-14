@@ -28,7 +28,7 @@ public class Billable extends AbstractEntity
 	@JoinTable(name = "item_billable", 
 	joinColumns = @JoinColumn(name = "billableId"), 
 	inverseJoinColumns = @JoinColumn(name = "itemId"))
-	public List<Item> item = new ArrayList<Item>();
+	private List<Item> item = new ArrayList<Item>();
 	
 	public Billable() {}
 	

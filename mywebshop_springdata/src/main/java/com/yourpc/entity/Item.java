@@ -35,7 +35,7 @@ public class Item extends AbstractEntity
 	@JoinTable(name = "item_billable", 
 	joinColumns = @JoinColumn(name = "itemId"), 
 	inverseJoinColumns = @JoinColumn(name = "billableId"))
-	public List<Billable> billable = new ArrayList<Billable>();
+	private List<Billable> billable = new ArrayList<Billable>();
 	
 	public Item() {}
 	

@@ -12,7 +12,6 @@ import com.yourpc.service.UserService;
 
 public class UserController extends HttpServlet
 {
-	private static final long serialVersionUID = -8729639824628483795L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
@@ -30,8 +29,8 @@ public class UserController extends HttpServlet
 		user.setPassword(req.getParameter("userpassword"));
 		user.setAddress(req.getParameter("useraddress"));
 		
-		UserService userService = (UserService) WelcomeController.context.getBean("userServiceImpl");
-		userService.add(user);
+//		UserService userService = (UserService) WelcomeController.context.getBean("userServiceImpl");
+//		userService.add(user);
 	    req.getRequestDispatcher("welcome.jsp").forward(req, resp);
 	}
 }

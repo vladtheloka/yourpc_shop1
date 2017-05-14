@@ -8,22 +8,28 @@
 		<servlet-name>WelcomeServlet</servlet-name>
 		<servlet-class>com.yourpc.controller.WelcomeController</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>WelcomeServlet</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
-	
-	
-	
+
+
+
 	<servlet>
 		<servlet-name>UserServlet</servlet-name>
 		<servlet-class>com.yourpc.controller.UserController</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>UserServlet</servlet-name>
 		<url-pattern>/newUser</url-pattern>
 	</servlet-mapping>
-	
+
+
+	<welcome-file-list>
+		<welcome-file>welcome.jsp</welcome-file>
+
+	</welcome-file-list>
+
 </web-app>

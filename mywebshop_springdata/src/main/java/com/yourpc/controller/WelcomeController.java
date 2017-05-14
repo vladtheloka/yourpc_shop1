@@ -16,7 +16,6 @@ import com.yourpc.service.UserService;
 
 public class WelcomeController extends HttpServlet 
 {
-	private static final long serialVersionUID = -3554323831708251860L;
 	static ConfigurableApplicationContext context = null;
 
 	static 
@@ -24,7 +23,7 @@ public class WelcomeController extends HttpServlet
 		context = new ClassPathXmlApplicationContext("applicationContext.xml");
 	}
 
-	@Override
+	 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
 	{
 		UserService userService = (UserService) context.getBean("userServiceImpl");

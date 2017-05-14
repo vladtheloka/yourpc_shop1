@@ -19,38 +19,32 @@ public class UserServiceImpl implements UserService
 	@Autowired
 	private UserDao userDao;
 
-	@Override
 	public void add(User user) 
 	{
 		//user validation/crypt
 		userDao.save(user);	
 	}
 
-	@Override
 	public void delete(int id) 
 	{
 		userDao.delete(id);	
 	}
 
-	@Override
 	public void update(User user) 
 	{
 		userDao.save(user);	
 	}
 
-	@Override
 	public User getOne(int id) 
 	{
 		return userDao.findOne(id);
 	}
 
-	@Override
 	public List<User> getAll() 
 	{
 		return userDao.findAll();
 	}
 
-	@Override
 	public String validate(String name, String password) 
 	{
 		String flag = "Failure";
@@ -78,14 +72,12 @@ public class UserServiceImpl implements UserService
 		return flag;
 	}
 
-	@Override
 	public void addRoleToUser(User user, Role role) 
 	{
 		user.setRole(role);
 		userDao.save(user);
 	}
 
-	@Override
 	public void removeRoleFromUser(User user) 
 	{
 		user.setRole(null);

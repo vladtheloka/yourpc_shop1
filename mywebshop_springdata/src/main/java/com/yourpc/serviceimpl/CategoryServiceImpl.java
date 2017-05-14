@@ -15,31 +15,26 @@ public class CategoryServiceImpl implements CategoryService
 	@Autowired
 	private CategoryDao categoryDao;
 
-	@Override
 	public void add(Category category) 
 	{
 		categoryDao.save(category);
 	}
 
-	@Override
 	public void delete(int id)
 	{
 		categoryDao.delete(id);
 	}
 
-	@Override
 	public void update(Category category) 
 	{
 		categoryDao.save(category);
 	}
 
-	@Override
 	public Category getOne(int id) 
 	{
 		return categoryDao.findOne(id);
 	}
 
-	@Override
 	public List<Category> getAll() 
 	{
 		return categoryDao.findAll();

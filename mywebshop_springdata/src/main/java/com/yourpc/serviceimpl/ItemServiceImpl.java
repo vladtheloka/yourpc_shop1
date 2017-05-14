@@ -17,57 +17,48 @@ public class ItemServiceImpl implements ItemService
 	@Autowired
 	private ItemDao itemDao;
 
-	@Override
 	public void add(Item item) 
 	{
 		itemDao.save(item);
 	}
 
-	@Override
 	public void delete(int id) 
 	{
 		itemDao.delete(id);
 	}
 
-	@Override
 	public void update(Item item)
 	{
 		itemDao.save(item);	
 	}
 
-	@Override
 	public Item getOne(int id) 
 	{
 		return itemDao.findOne(id);
 	}
 
-	@Override
 	public List<Item> getAll()
 	{
 		return itemDao.findAll();
 	}
 
-	@Override
 	public void addCategoyToItem(Category category, Item item) 
 	{
 		item.setCategory(category);
 		itemDao.save(item);
 	}
 
-	@Override
 	public void addBillableToItem(Billable billable, Item item)
 	{
 		item.getBillable().add(billable);
 		itemDao.save(item);
 	}
 
-	@Override
 	public Item getItemWithBillables(String itemName)
 	{
 		return itemDao.getItemWithBillables(itemName);
 	}
 
-	@Override
 	public void removeCategoryFromItem(Item item) 
 	{
 		item.setCategory(null);

@@ -17,57 +17,51 @@ public class BillableServiceImpl implements BillableService
 	@Autowired
 	private BillableDao billableDao;
 
-	@Override
+ 
 	public void add(Billable billable) 
 	{
 		billableDao.save(billable);
 	}
 
-	@Override
+ 
 	public void delete(int id) 
 	{
 		billableDao.delete(id);
 	}
 
-	@Override
+ 
 	public void update(Billable billable) 
 	{
 		billableDao.save(billable);
 	}
 
-	@Override
 	public Billable getOne(int id) 
 	{
 		return billableDao.findOne(id);
 	}
 
-	@Override
 	public List<Billable> getAll() 
 	{
 		return billableDao.findAll();
 	}
 
-	@Override
 	public void addUserToBillable(User user, Billable billable) 
 	{
 		billable.setUser(user);
 		billableDao.save(billable);
 	}
 
-	@Override
 	public void addBillableToItem(Item item, Billable billable) 
 	{
 		billable.getItem().add(item);
 		billableDao.save(billable);
 	}
 
-	@Override
 	public Billable getBillablewithItems(String billableName) 
 	{
 		return billableDao.getBillablewithItems(billableName);
 	}
 
-	@Override
 	public void removeUserFromBillable(Billable billable) 
 	{
 		billable.setUser(null);
