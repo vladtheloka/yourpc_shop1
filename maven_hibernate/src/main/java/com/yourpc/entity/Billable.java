@@ -24,7 +24,7 @@ public class Billable extends AbstractEntity
 	@ManyToOne()
 	private User user;
 	
-	@ManyToMany()
+	@ManyToMany
 	@JoinTable(name = "item_billable", 
 	joinColumns = @JoinColumn(name = "billableId"), 
 	inverseJoinColumns = @JoinColumn(name = "itemId"))
@@ -82,6 +82,6 @@ public class Billable extends AbstractEntity
 	@Override
 	public String toString() 
 	{
-		return "Billable [name=" + name + ", address=" + address + ", user=" + user + ", item=" + item + "]";
+		return "Name: " + name + ", Address: " + address + ", User: " + user + ", Item: " + item;
 	}
 }

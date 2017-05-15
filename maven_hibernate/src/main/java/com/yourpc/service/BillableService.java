@@ -15,7 +15,7 @@ public interface BillableService
 	List<Billable> getAll();
 	void addUserToBillable(User user, Billable billable);
 	void addBillableToItem(Item item, Billable billable);
-	Billable getBillablewithItems(String billableName);
+	Billable getBillablewithItems(int id);
 	void removeUserFromBillable(Billable billable);
 	Billable findByName(String name);
 	void deleteByName(String name);

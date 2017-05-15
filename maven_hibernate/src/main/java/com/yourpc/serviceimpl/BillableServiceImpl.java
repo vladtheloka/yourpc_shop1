@@ -57,9 +57,9 @@ public class BillableServiceImpl implements BillableService
 		billableDao.save(billable);
 	}
 
-	public Billable getBillablewithItems(String billableName) 
+	public Billable getBillablewithItems(int id) 
 	{
-		return billableDao.getBillablewithItems(billableName);
+		return billableDao.getBillablewithItems(id);
 	}
 
 	public void removeUserFromBillable(Billable billable) 

@@ -10,6 +10,6 @@ public interface ItemDao extends JpaRepository<Item, Integer>
 {
 	Item findByName(String name);
 	void deleteByName(String name);
-	@Query("select distinct i from Item i left join fetch i.billable where i.name =:name")
-	Item getItemWithBillables(@Param("name")String itemName);
+	@Query("select distinct i from Item i left join fetch i.billable where i.id =:id")
+	Item getItemWithBillables(@Param("id")int id);
 }

@@ -10,6 +10,6 @@ public interface BillableDao extends JpaRepository<Billable, Integer>
 {
 	Billable findByName(String name);
 	void deleteByName(String name);
-	@Query("select distinct b from Billable b left join fetch b.item where b.name =:name")
-	Billable getBillablewithItems(@Param("name")String billableName);
+	@Query("select distinct b from Billable b left join fetch b.item where b.id =:id")
+	Billable getBillablewithItems(@Param("id")int id);
 }

@@ -15,7 +15,7 @@ public interface ItemService
 	List<Item> getAll();
 	void addCategoyToItem(Category category, Item item);
 	void addBillableToItem(Billable billable, Item item);
-	Item getItemWithBillables(String itemName);
+	Item getItemWithBillables(int id);
 	void removeCategoryFromItem(Item item);
 	Item findByName(String name);
 	void deleteByName(String name);

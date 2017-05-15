@@ -1,7 +1,6 @@
 package com.yourpc.entity;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -31,7 +30,7 @@ public class Item extends AbstractEntity
 	@ManyToOne()
 	private Category category;
 	
-	@ManyToMany()
+	@ManyToMany
 	@JoinTable(name = "item_billable", 
 	joinColumns = @JoinColumn(name = "itemId"), 
 	inverseJoinColumns = @JoinColumn(name = "billableId"))
@@ -111,7 +110,7 @@ public class Item extends AbstractEntity
 	@Override
 	public String toString() 
 	{
-		return "Item [name=" + name + ", content=" + content + ", price=" + price + ", image=" + Arrays.toString(image)
-				+ ", category=" + category + ", billable=" + billable + "]";
+		return "Name: " + name + ", Content: " + content + ", Price: " + price 
+				+ ", Category: " + category + ", Billable: " + billable;
 	}
 }

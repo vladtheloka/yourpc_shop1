@@ -54,9 +54,9 @@ public class ItemServiceImpl implements ItemService
 		itemDao.save(item);
 	}
 
-	public Item getItemWithBillables(String itemName)
+	public Item getItemWithBillables(int id)
 	{
-		return itemDao.getItemWithBillables(itemName);
+		return itemDao.getItemWithBillables(id);
 	}
 
 	public void removeCategoryFromItem(Item item) 
