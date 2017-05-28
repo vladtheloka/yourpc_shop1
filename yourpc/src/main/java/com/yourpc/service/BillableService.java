@@ -1,6 +1,7 @@
 package com.yourpc.service;
 
 import java.util.List;
+import java.util.Set;
 
 import com.yourpc.entity.Billable;
 import com.yourpc.entity.Item;
@@ -15,8 +16,9 @@ public interface BillableService
 	List<Billable> getAll();
 	void addUserToBillable(User user, Billable billable);
 	void addBillableToItem(Item item, Billable billable);
-	Billable getBillablewithItems(int id);
+	Billable getBillableWithItems(int id);
 	void removeUserFromBillable(Billable billable);
 	Billable findByName(String name);
 	void deleteByName(String name);
+	Set<Item> getBillableWithItems();
 }

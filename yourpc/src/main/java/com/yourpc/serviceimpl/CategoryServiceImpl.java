@@ -1,6 +1,7 @@
 package com.yourpc.serviceimpl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,15 +11,20 @@ import com.yourpc.dao.ItemDao;
 import com.yourpc.entity.Category;
 import com.yourpc.entity.Item;
 import com.yourpc.service.CategoryService;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService
 {
-	@Autowired
-	private CategoryDao categoryDao;
+	private final CategoryDao categoryDao;
 	
+	private final ItemDao itemDao;
+
 	@Autowired
-	private ItemDao itemDao;
+	public CategoryServiceImpl(CategoryDao categoryDao, ItemDao itemDao) {
+		this.categoryDao = categoryDao;
+		this.itemDao = itemDao;
+	}
 
 	public void add(Category category) 
 	{
@@ -29,7 +35,7 @@ public class CategoryServiceImpl implements CategoryService
 	{
 		Category category = categoryDao.findOne(id);
 		
-		List<Item> items = category.getItem();
+		Set<Item> items = category.getItem();
 		for (Item i : items) 
 		{
 			i.setCategory(null);

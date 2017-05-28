@@ -1,6 +1,7 @@
 package com.yourpc.serviceimpl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,10 +15,14 @@ import com.yourpc.service.BillableService;
 @Service
 public class BillableServiceImpl implements BillableService
 {
-	@Autowired
-	private BillableDao billableDao;
+	private final BillableDao billableDao;
 
- 
+	@Autowired
+	public BillableServiceImpl(BillableDao billableDao) {
+		this.billableDao = billableDao;
+	}
+
+
 	public void add(Billable billable) 
 	{
 		billableDao.save(billable);
@@ -57,9 +62,9 @@ public class BillableServiceImpl implements BillableService
 		billableDao.save(billable);
 	}
 
-	public Billable getBillablewithItems(int id) 
+	public Billable getBillableWithItems(int id)
 	{
-		return billableDao.getBillablewithItems(id);
+		return billableDao.getBillableWithItems(id);
 	}
 
 	public void removeUserFromBillable(Billable billable) 
@@ -78,5 +83,10 @@ public class BillableServiceImpl implements BillableService
 	public void deleteByName(String name)
 	{
 		billableDao.deleteByName(name);
+	}
+
+	public Set<Item> getBillableWithItems()
+	{
+		return billableDao.getBillableWithItems();
 	}
 }

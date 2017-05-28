@@ -1,7 +1,10 @@
 package com.yourpc.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,10 +16,12 @@ import javax.persistence.Table;
 public class Category extends AbstractEntity
 {
 	@Column(name="categoryName")
+	@Getter @Setter
 	private String name;
 	
 	@OneToMany(mappedBy = "category")
-	private List<Item> item = new ArrayList<Item>();
+    @Getter @Setter
+	private Set<Item> item = new HashSet<>();
 	
 	public Category() {}
 	
@@ -24,26 +29,6 @@ public class Category extends AbstractEntity
 	{
 		super();
 		this.name = name;
-	}
-
-	public String getName() 
-	{
-		return name;
-	}
-
-	public void setName(String name) 
-	{
-		this.name = name;
-	}
-
-	public List<Item> getItem() 
-	{
-		return item;
-	}
-
-	public void setItem(List<Item> item) 
-	{
-		this.item = item;
 	}
 
 	@Override

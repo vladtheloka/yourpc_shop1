@@ -1,13 +1,13 @@
 package com.yourpc.serviceimpl;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.NoResultException;
 import javax.persistence.NonUniqueResultException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.yourpc.dao.BillableDao;
 import com.yourpc.dao.UserDao;
@@ -17,14 +17,17 @@ import com.yourpc.entity.User;
 import com.yourpc.service.UserService;
 
 @Service
-@Transactional
 public class UserServiceImpl implements UserService
 {
-	@Autowired
-	private UserDao userDao;
+	private final UserDao userDao;
 	
+	private final BillableDao billableDao;
+
 	@Autowired
-	private BillableDao billableDao;
+	public UserServiceImpl(UserDao userDao, BillableDao billableDao) {
+		this.userDao = userDao;
+		this.billableDao = billableDao;
+	}
 
 	public void add(User user) 
 	{
@@ -42,7 +45,7 @@ public class UserServiceImpl implements UserService
 	{
 		User user = userDao.findOne(id);
 		
-		List<Billable> billables = user.getBillable();
+		Set<Billable> billables = user.getBillable();
 		for (Billable b : billables) 
 		{
 			b.setUser(null);
@@ -61,7 +64,7 @@ public class UserServiceImpl implements UserService
 		return userDao.findOne(id);
 	}
 
-	public List<User> getAll() 
+	public List<User> getAll()
 	{
 		return userDao.findAll();
 	}
@@ -69,11 +72,10 @@ public class UserServiceImpl implements UserService
 	public String validate(String name, String password) 
 	{
 		String flag = "Failure";
-		User user = null;
 
 		try
 		{
-			user = userDao.findByNameAndPassword(name, password);
+			User user = userDao.findByNameAndPassword(name, password);
 	
 			if(name.equalsIgnoreCase(user.getName()) && password.equals(user.getPassword()))
 			{
@@ -81,15 +83,11 @@ public class UserServiceImpl implements UserService
 			}
 		}
 		
-		catch(NoResultException e)
+		catch(NoResultException | NonUniqueResultException e)
 		{
 			System.out.println(e.getMessage());
 		}
-		catch(NonUniqueResultException e)
-		{
-			System.out.println(e.getMessage());
-		}
-		
+
 		return flag;
 	}
 
@@ -114,7 +112,7 @@ public class UserServiceImpl implements UserService
 	{
 		User user = userDao.findByNameAndPassword(name, password);
 		
-		List<Billable> billables = user.getBillable();
+		Set<Billable> billables = user.getBillable();
 		for (Billable b : billables) 
 		{
 			b.setUser(null);

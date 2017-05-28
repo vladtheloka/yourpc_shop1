@@ -1,6 +1,7 @@
 package com.yourpc.serviceimpl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,8 +15,12 @@ import com.yourpc.service.ItemService;
 @Service
 public class ItemServiceImpl implements ItemService
 {
+	private final ItemDao itemDao;
+
 	@Autowired
-	private ItemDao itemDao;
+	public ItemServiceImpl(ItemDao itemDao) {
+		this.itemDao = itemDao;
+	}
 
 	public void add(Item item) 
 	{
@@ -42,7 +47,7 @@ public class ItemServiceImpl implements ItemService
 		return itemDao.findAll();
 	}
 
-	public void addCategoyToItem(Category category, Item item) 
+	public void addCategoryToItem(Category category, Item item)
 	{
 		item.setCategory(category);
 		itemDao.save(item);
@@ -74,5 +79,10 @@ public class ItemServiceImpl implements ItemService
 	{
 		itemDao.deleteByName(name);
 	}
+
+    public Set<Billable> getItemWithBillables()
+    {
+        return itemDao.getItemWithBillables();
+    }
 
 }

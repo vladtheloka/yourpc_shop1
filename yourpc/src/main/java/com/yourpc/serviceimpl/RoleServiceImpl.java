@@ -1,6 +1,7 @@
 package com.yourpc.serviceimpl;
 
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,15 +11,20 @@ import com.yourpc.dao.UserDao;
 import com.yourpc.entity.Role;
 import com.yourpc.entity.User;
 import com.yourpc.service.RoleService;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RoleServiceImpl implements RoleService 
 {
-	@Autowired
-	private RoleDao roleDao;
+	private final RoleDao roleDao;
 	
+	private final UserDao userDao;
+
 	@Autowired
-	private UserDao userDao;
+	public RoleServiceImpl(RoleDao roleDao, UserDao userDao) {
+		this.roleDao = roleDao;
+		this.userDao = userDao;
+	}
 
 	public void add(Role role) 
 	{
@@ -29,7 +35,7 @@ public class RoleServiceImpl implements RoleService
 	{
 		Role role = roleDao.findOne(id);
 		
-		List<User> users = role.getUser();
+		Set<User> users = role.getUser();
 		for (User u : users) 
 		{
 			u.setRole(null);
@@ -62,7 +68,7 @@ public class RoleServiceImpl implements RoleService
 	{
 		Role role = roleDao.findByName(name);
 		
-		List<User> users = role.getUser();
+		Set<User> users = role.getUser();
 		for (User u : users) 
 		{
 			u.setRole(null);

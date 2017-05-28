@@ -1,6 +1,7 @@
 package com.yourpc.service;
 
 import java.util.List;
+import java.util.Set;
 
 import com.yourpc.entity.Billable;
 import com.yourpc.entity.Category;
@@ -13,10 +14,11 @@ public interface ItemService
     void update(Item item);
 	Item getOne(int id);
 	List<Item> getAll();
-	void addCategoyToItem(Category category, Item item);
+	void addCategoryToItem(Category category, Item item);
 	void addBillableToItem(Billable billable, Item item);
 	Item getItemWithBillables(int id);
 	void removeCategoryFromItem(Item item);
 	Item findByName(String name);
 	void deleteByName(String name);
+	Set<Billable> getItemWithBillables();
 }
