@@ -11,7 +11,6 @@ import com.yourpc.dao.ItemDao;
 import com.yourpc.entity.Category;
 import com.yourpc.entity.Item;
 import com.yourpc.service.CategoryService;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService

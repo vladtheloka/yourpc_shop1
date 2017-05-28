@@ -11,7 +11,6 @@ import com.yourpc.dao.UserDao;
 import com.yourpc.entity.Role;
 import com.yourpc.entity.User;
 import com.yourpc.service.RoleService;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RoleServiceImpl implements RoleService 

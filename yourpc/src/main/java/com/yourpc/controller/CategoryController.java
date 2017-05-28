@@ -1,7 +1,6 @@
 package com.yourpc.controller;
 
 import com.yourpc.entity.Category;
-import com.yourpc.entity.Role;
 import com.yourpc.service.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
