@@ -3,6 +3,7 @@ package com.yourpc.controller;
 import com.yourpc.editors.RoleEditor;
 import com.yourpc.entity.Role;
 import com.yourpc.service.RoleService;
+import com.yourpc.validator.user.UserValidationMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -42,10 +43,38 @@ public class UserController
 	}
 	
 	@PostMapping(value="/saveUser")
-	public String signUp(@ModelAttribute User user)
+	public String signUp(@ModelAttribute User user, Model model)
 	{
-		userService.add(user);
-		return "redirect:/";
+        try
+        {
+            userService.add(user);
+        }
+        catch (Exception e)
+        {
+            if(e.getMessage().equals(UserValidationMessages.EMPTY_USERNAME_FIELD) ||
+                    e.getMessage().equals(UserValidationMessages.USERNAME_ALREADY_EXIST))
+            {
+                model.addAttribute("usernameException", e.getMessage());
+            }
+            else if(e.getMessage().equals(UserValidationMessages.EMPTY_EMAIL_FIELD)||
+                    e.getMessage().equals(UserValidationMessages.EMAIL_ALREADY_EXIST)||
+                    e.getMessage().equals(UserValidationMessages.WRONG_EMAIL))
+            {
+                model.addAttribute("emailException", e.getMessage());
+            }
+            else if(e.getMessage().equals(UserValidationMessages.EMPTY_PASSWORD_FIELD)||
+                    e.getMessage().equals(UserValidationMessages.TOO_SHORT_PASSWORD))
+            {
+                model.addAttribute("passwordException", e.getMessage());
+            }
+            else if(e.getMessage().equals(UserValidationMessages.EMPTY_ADDRESS_FIELD))
+            {
+                model.addAttribute("addressException", e.getMessage());
+            }
+            model.addAttribute("roles", roleService.getAll());
+            return "signup";
+        }
+        return "redirect:/";
 	}
 
 	@GetMapping(value="/deleteUser/{id}")
@@ -64,11 +93,36 @@ public class UserController
 	}
 
 	@PostMapping(value="/updateUser/{id}")
-	public String updateUser(@ModelAttribute User user, @PathVariable int id, Model model)
+	public String updateUser(@ModelAttribute("userAttribute") User user, @PathVariable int id, Model model)
 	{
 		user.setId(id);
-		userService.update(user);
-		model.addAttribute("users", userService.getAll());
+		try
+        {
+            userService.update(user);
+        }
+        catch (Exception e)
+        {
+            if (e.getMessage().equals(UserValidationMessages.EMPTY_USERNAME_FIELD))
+            {
+                model.addAttribute("updatenameException", e.getMessage());
+            }
+            else if (e.getMessage().equals(UserValidationMessages.EMPTY_EMAIL_FIELD) ||
+                    e.getMessage().equals(UserValidationMessages.WRONG_EMAIL))
+            {
+                model.addAttribute("updateemailException", e.getMessage());
+            }
+            else if (e.getMessage().equals(UserValidationMessages.EMPTY_PASSWORD_FIELD) ||
+                    e.getMessage().equals(UserValidationMessages.TOO_SHORT_PASSWORD))
+            {
+                model.addAttribute("updatepasswordException", e.getMessage());
+            }
+            else if (e.getMessage().equals(UserValidationMessages.EMPTY_ADDRESS_FIELD))
+            {
+                model.addAttribute("updateaddressException", e.getMessage());
+            }
+            model.addAttribute("roles", roleService.getAll());
+            return "updateUser";
+        }
 		return "redirect:/";
 	}
 }

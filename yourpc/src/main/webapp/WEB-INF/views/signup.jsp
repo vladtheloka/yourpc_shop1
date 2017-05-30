@@ -10,21 +10,25 @@
                     <tr>
                         <td><form:label path="name">Name:</form:label></td>
                         <td><form:input path="name"/></td>
+                        <td style="color: red">${usernameException}</td>
                     </tr>
 
                     <tr>
                         <td><form:label path="email">Email:</form:label></td>
-                        <td><form:input type="email" path="email"/></td>
+                        <td><form:input path="email"/></td>
+                        <td style="color: red">${emailException}</td>
                     </tr>
 
                     <tr>
                         <td><form:label path="password">Password:</form:label></td>
                         <td><form:password path="password"/></td>
+                        <td style="color: red">${passwordException}</td>
                     </tr>
 
                     <tr>
                         <td><form:label path="address">Address:</form:label></td>
                         <td><form:input path="address"/></td>
+                        <td style="color: red">${addressException}</td>
                     </tr>
                     <tr>
                         <td><form:label path="role">Role:</form:label></td>
