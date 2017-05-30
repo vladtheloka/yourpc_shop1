@@ -104,7 +104,6 @@
     <tr>
         <th>Billable Id</th>
         <th>Name</th>
-        <th>Address</th>
         <th>User</th>
         <th>Items</th>
         <th colspan=2>Action</th>
@@ -115,7 +114,6 @@
         <tr>
             <td><c:out value="${billable.id}" /></td>
             <td><c:out value="${billable.name}" /></td>
-            <td><c:out value="${billable.address}" /></td>
             <td><c:out value="${billable.user}" /></td>
             <td><c:out value="${billable.item}" /></td>
             <td><a href="/deleteBillable/${billable.id}">Delete</a></td>

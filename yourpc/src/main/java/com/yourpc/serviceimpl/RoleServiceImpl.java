@@ -1,9 +1,9 @@
 package com.yourpc.serviceimpl;
 
 import java.util.List;
-import java.util.Set;
-
+import com.yourpc.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.yourpc.dao.RoleDao;
@@ -19,28 +19,30 @@ public class RoleServiceImpl implements RoleService
 	
 	private final UserDao userDao;
 
+    private final Validator validator;
+
 	@Autowired
-	public RoleServiceImpl(RoleDao roleDao, UserDao userDao) {
+	public RoleServiceImpl(RoleDao roleDao, UserDao userDao, @Qualifier("roleValidator") Validator validator)
+    {
 		this.roleDao = roleDao;
 		this.userDao = userDao;
-	}
+        this.validator = validator;
+    }
 
-	public void add(Role role) 
-	{
-		roleDao.save(role);	
+	public void add(Role role) throws Exception {
+		validator.validate(role);
+		roleDao.save(role);
 	}
 
 	public void delete(int id) 
 	{
-		Role role = roleDao.findOne(id);
-		
-		Set<User> users = role.getUser();
-		for (User u : users) 
-		{
-			u.setRole(null);
-			userDao.save(u);
-		}
-		roleDao.delete(id);	
+		Role role = roleDao.roleWithUser(id);
+        for (User user: role.getUser())
+        {
+            user.setRole(null);
+            userDao.saveAndFlush(user);
+        }
+        roleDao.delete(id);
 	}
 
 	public void update(Role role) 
@@ -56,24 +58,6 @@ public class RoleServiceImpl implements RoleService
 	public List<Role> getAll() 
 	{
 		return roleDao.findAll();
-	}
-
-	public Role findByName(String name) 
-	{
-		return roleDao.findByName(name);
-	}
-
-	public void deleteByName(String name) 
-	{
-		Role role = roleDao.findByName(name);
-		
-		Set<User> users = role.getUser();
-		for (User u : users) 
-		{
-			u.setRole(null);
-			userDao.save(u);
-		}
-		roleDao.deleteByName(name);	
 	}
 
 }

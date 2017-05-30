@@ -1,14 +1,13 @@
 package com.yourpc.serviceimpl;
 
 import java.util.List;
-import java.util.Set;
 
+import com.yourpc.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import com.yourpc.dao.ItemDao;
-import com.yourpc.entity.Billable;
-import com.yourpc.entity.Category;
 import com.yourpc.entity.Item;
 import com.yourpc.service.ItemService;
 
@@ -17,13 +16,18 @@ public class ItemServiceImpl implements ItemService
 {
 	private final ItemDao itemDao;
 
+	private final Validator validator;
+
 	@Autowired
-	public ItemServiceImpl(ItemDao itemDao) {
+	public ItemServiceImpl(ItemDao itemDao, @Qualifier("itemValidator") Validator validator)
+	{
 		this.itemDao = itemDao;
+		this.validator = validator;
 	}
 
-	public void add(Item item) 
-	{
+	public void add(Item item) throws Exception
+    {
+	    validator.validate(item);
 		itemDao.save(item);
 	}
 
@@ -46,43 +50,4 @@ public class ItemServiceImpl implements ItemService
 	{
 		return itemDao.findAll();
 	}
-
-	public void addCategoryToItem(Category category, Item item)
-	{
-		item.setCategory(category);
-		itemDao.save(item);
-	}
-
-	public void addBillableToItem(Billable billable, Item item)
-	{
-		item.getBillable().add(billable);
-		itemDao.save(item);
-	}
-
-	public Item getItemWithBillables(int id)
-	{
-		return itemDao.getItemWithBillables(id);
-	}
-
-	public void removeCategoryFromItem(Item item) 
-	{
-		item.setCategory(null);
-		itemDao.save(item);
-	}
-
-	public Item findByName(String name) 
-	{
-		return itemDao.findByName(name);
-	}
-
-	public void deleteByName(String name)
-	{
-		itemDao.deleteByName(name);
-	}
-
-    public Set<Billable> getItemWithBillables()
-    {
-        return itemDao.getItemWithBillables();
-    }
-
 }

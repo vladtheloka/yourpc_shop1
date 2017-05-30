@@ -8,6 +8,7 @@ import com.yourpc.entity.User;
 import com.yourpc.service.BillableService;
 import com.yourpc.service.ItemService;
 import com.yourpc.service.UserService;
+import com.yourpc.validator.billable.BillableValidationMessages;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,9 +51,23 @@ public class BillableController
     }
 
     @PostMapping(value="/saveBillable")
-    public String addBillable(@ModelAttribute Billable billable)
+    public String addBillable(@ModelAttribute Billable billable, Model model)
     {
-        billableService.add(billable);
+        try
+        {
+            billableService.add(billable);
+        }
+        catch (Exception e)
+        {
+            if(e.getMessage().equals(BillableValidationMessages.EMPTY_NAME_FIELD)
+                    || e.getMessage().equals(BillableValidationMessages.BILLABLENAME_ALREADY_EXIST))
+            {
+                model.addAttribute("billablenameException", e.getMessage());
+            }
+            model.addAttribute("users", userService.getAll());
+            model.addAttribute("items", itemService.getAll());
+            return "billable";
+        }
         return "redirect:/";
     }
 

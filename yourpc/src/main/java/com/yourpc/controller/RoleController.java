@@ -2,6 +2,7 @@ package com.yourpc.controller;
 
 import com.yourpc.entity.Role;
 import com.yourpc.service.RoleService;
+import com.yourpc.validator.role.RoleValidationMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,9 +31,20 @@ public class RoleController
     }
 
     @PostMapping(value="/saveRole")
-    public String addRole(@ModelAttribute Role role)
+    public String addRole(@ModelAttribute Role role, Model model)
     {
-        roleService.add(role);
+        try
+        {
+            roleService.add(role);
+        }
+        catch (Exception e)
+        {
+           if(e.getMessage().equals(RoleValidationMessages.EMPTY_ROLE_FIELD))
+           {
+               model.addAttribute("roleException", e.getMessage());
+           }
+           return "role";
+        }
         return "redirect:/";
     }
 

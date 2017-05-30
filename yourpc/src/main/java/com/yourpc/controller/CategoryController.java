@@ -2,6 +2,7 @@ package com.yourpc.controller;
 
 import com.yourpc.entity.Category;
 import com.yourpc.service.CategoryService;
+import com.yourpc.validator.category.CategoryValidationMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,9 +31,20 @@ public class CategoryController
     }
 
     @PostMapping(value="/saveCategory")
-    public String addCategory(@ModelAttribute Category category)
+    public String addCategory(@ModelAttribute Category category, Model model)
     {
-        categoryService.add(category);
+        try
+        {
+            categoryService.add(category);
+        }
+        catch (Exception e)
+        {
+            if(e.getMessage().equals(CategoryValidationMessages.EMPTY_CATEGORY_FIELD))
+            {
+                model.addAttribute("categoryException", e.getMessage());
+            }
+            return "category";
+        }
         return "redirect:/";
     }
 

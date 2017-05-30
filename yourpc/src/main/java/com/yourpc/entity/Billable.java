@@ -16,11 +16,7 @@ public class Billable extends AbstractEntity
 	@Column(name="billableName")
     @Getter @Setter
 	private String name;
-	
-	@Column(name="billableAddress")
-    @Getter @Setter
-	private String address;
-	
+
 	@ManyToOne
     @Getter @Setter
 	private User user;
@@ -34,16 +30,15 @@ public class Billable extends AbstractEntity
 	
 	public Billable() {}
 	
-	public Billable(String name, String address)
+	public Billable(String name)
 	{
 		super();
 		this.name = name;
-		this.address = address;
 	}
 
 	@Override
 	public String toString() 
 	{
-		return "Name: " + name + ", Address: " + address + ", User: " + user + ", Item" + item;
+		return "Name: " + name + ", User: " + user + ", Item" + item;
 	}
 }

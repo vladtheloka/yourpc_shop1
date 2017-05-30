@@ -6,11 +6,9 @@ import com.yourpc.entity.Role;
 
 public interface RoleService
 {
-	void add(Role role);
+	void add(Role role) throws Exception;
 	void delete(int id);
     void update(Role role);
 	Role getOne(int id);
 	List<Role> getAll();
-	Role findByName(String name);
-	void deleteByName(String name);
 }

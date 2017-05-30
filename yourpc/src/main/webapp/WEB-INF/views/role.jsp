@@ -6,7 +6,12 @@
 </head>
 <body>
     <form:form modelAttribute="role" method="post" action="/saveRole">
-        <form:input path="name"/>
+        <table>
+            <tr>
+                <td><form:input path="name"/></td>
+                <td style="color: red">${roleException}</td>
+            </tr>
+        </table>
         <button>Add Role</button>
     </form:form>
 </body>

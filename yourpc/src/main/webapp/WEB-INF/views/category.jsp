@@ -6,7 +6,12 @@
 </head>
 <body>
 <form:form modelAttribute="category" method="post" action="/saveCategory">
-    <form:input path="name"/>
+    <table>
+        <tr>
+            <td><form:input path="name"/></td>
+            <td style="color: red">${categoryException}</td>
+        </tr>
+    </table>
     <button>Add Category</button>
 </form:form>
 </body>

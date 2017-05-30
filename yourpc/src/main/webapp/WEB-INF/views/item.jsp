@@ -10,16 +10,19 @@
         <tr>
             <td><form:label path="name">Name:</form:label></td>
             <td><form:input path="name"/></td>
+            <td style="color: red">${itemnameException}</td>
         </tr>
 
         <tr>
             <td><form:label path="price">Price:</form:label></td>
             <td><form:input type="number" path="price"/></td>
+            <td style="color: red">${itempriceException}</td>
         </tr>
 
         <tr>
             <td><form:label path="content">Content:</form:label></td>
             <td><form:input path="content"/></td>
+            <td style="color: red">${itemcontentException}</td>
         </tr>
 
         <tr>

@@ -6,11 +6,9 @@ import com.yourpc.entity.Category;
 
 public interface CategoryService
 {
-	void add(Category category);
+	void add(Category category) throws Exception;
 	void delete(int id);
     void update(Category category);
 	Category getOne(int id);
 	List<Category> getAll();
-	Category findByName(String name);
-	void deleteByName(String name);
 }

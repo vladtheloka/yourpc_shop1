@@ -38,9 +38,6 @@ public class Item extends AbstractEntity
 	inverseJoinColumns = @JoinColumn(name = "billableId"))
     @Getter @Setter
 	private Set<Billable> billable = new HashSet<>();
-	private String address;
-	private String user;
-	private String item;
 
 	public Item() {}
 	
@@ -58,29 +55,5 @@ public class Item extends AbstractEntity
 	{
 		return "Name: " + name + ", Content: " + content + ", Price: " + price 
 				+ ", Category: " + category;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getAddress() {
-		return address;
-	}
-
-	public void setUser(String user) {
-		this.user = user;
-	}
-
-	public String getUser() {
-		return user;
-	}
-
-	public void setItem(String item) {
-		this.item = item;
-	}
-
-	public String getItem() {
-		return item;
 	}
 }

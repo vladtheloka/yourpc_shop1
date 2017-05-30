@@ -5,6 +5,7 @@ import com.yourpc.entity.Category;
 import com.yourpc.entity.Item;
 import com.yourpc.service.CategoryService;
 import com.yourpc.service.ItemService;
+import com.yourpc.validator.item.ItemValidationMessages;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,9 +42,30 @@ public class ItemController
     }
 
     @PostMapping(value="/saveItem")
-    public String addItem(@ModelAttribute Item item)
+    public String addItem(@ModelAttribute Item item, Model model)
     {
-        itemService.add(item);
+        try
+        {
+            itemService.add(item);
+        }
+        catch (Exception e)
+        {
+            if(e.getMessage().equals(ItemValidationMessages.EMPTY_ITEMNAME_FIELD)
+                    || e.getMessage().equals(ItemValidationMessages.ITEMNAME_ALREADY_EXIST))
+            {
+                model.addAttribute("itemnameException", e.getMessage());
+            }
+            else if(e.getMessage().equals(ItemValidationMessages.EMPTY_CONTENT_FIELD))
+            {
+                model.addAttribute("itemcontentException", e.getMessage());
+            }
+            else if(e.getMessage().equals(ItemValidationMessages.ZERO_PRICE_FIELD))
+            {
+                model.addAttribute("itempriceException", e.getMessage());
+            }
+            model.addAttribute("categories", categoryService.getAll());
+            return "item";
+        }
         return "redirect:/";
     }
 
