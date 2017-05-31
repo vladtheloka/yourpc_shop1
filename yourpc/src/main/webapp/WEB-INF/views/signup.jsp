@@ -5,7 +5,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-            <form:form modelAttribute="user" method="post" action="/saveUser">
+            <form:form id="myForm" modelAttribute="user" method="post" action="/saveUser">
                 <table>
                     <tr>
                         <td><form:label path="name">Name:</form:label></td>
@@ -30,9 +30,10 @@
                         <td><form:input path="address"/></td>
                         <td style="color: red">${addressException}</td>
                     </tr>
+                    
                     <tr>
                         <td><form:label path="role">Role:</form:label></td>
-                        <td><form:select path="role" items="${roles}" itemLabel="name" itemValue="id"/></td>
+                        <td><form:checkboxes path="role" items="${roles}" itemLabel="name" itemValue="id"/></td>
                     </tr>
                 </table>
                 <input type="submit" value="Save" />
