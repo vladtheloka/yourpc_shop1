@@ -106,4 +106,11 @@ public class BillableController
         Hibernate.initialize(billable.getItem());
         return "views-user-billableDetails";
     }
+
+    @GetMapping("/listOfBillables")
+    public String allItems(Model model)
+    {
+        model.addAttribute("billables", billableService.getBillableWithItems());
+        return "views-admin-listOfBillables";
+    }
 }

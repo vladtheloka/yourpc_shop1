@@ -92,4 +92,11 @@ public class ItemController
         model.addAttribute("items", itemService.getAll());
         return "redirect:/";
     }
+
+    @GetMapping("/listOfItems")
+    public String allItems(Model model)
+    {
+        model.addAttribute("items", itemService.getAll());
+        return "views-admin-listOfItems";
+    }
 }

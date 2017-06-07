@@ -13,7 +13,6 @@
                 <th>Address</th>
                 <th>Role</th>
                 <th>Billable</th>
-                <th colspan=2>Action</th>
             </tr>
             </thead>
             <tbody>
@@ -28,8 +27,6 @@
                     <a href="/billableDetails/${billable.name}">${billable.name}</a><br />
                     </c:forEach>
                     </td>
-                    <td><a href="/deleteItem/${user.id}">Delete</a></td>
-                    <td><a href="/updateItem/${user.id}">Update</a></td>
                 </tr>
             </tbody>
         </table>

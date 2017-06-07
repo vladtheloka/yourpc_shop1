@@ -70,4 +70,11 @@ public class CategoryController
         model.addAttribute("categories", categoryService.getAll());
         return "redirect:/";
     }
+
+    @GetMapping("/listOfCategories")
+    public String allItems(Model model)
+    {
+        model.addAttribute("categories", categoryService.getAll());
+        return "views-admin-listOfCategories";
+    }
 }
