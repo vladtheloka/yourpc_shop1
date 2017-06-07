@@ -1,0 +1,15 @@
+package com.yourpc_shop.service;
+
+import java.util.List;
+
+import com.yourpc_shop.entity.User;
+
+public interface UserService
+{
+    void add(User user) throws Exception;
+    void delete(int id);
+    void update(User user);
+    User getOne(int id);
+    List<User> getAll();
+    User userWithBillables(int id);
+}
