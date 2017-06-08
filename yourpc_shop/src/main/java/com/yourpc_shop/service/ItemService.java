@@ -11,4 +11,5 @@ public interface ItemService
     void update(Item item);
     Item getOne(int id);
     List<Item> getAll();
+    Item itemWithUsers(int id);
 }

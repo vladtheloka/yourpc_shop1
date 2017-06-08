@@ -27,14 +27,14 @@ public class UserController
         this.userService = userService;
     }
 
-    @GetMapping("/signup")
+    @GetMapping("/signUp")
     public String signUp(Model model)
     {
         model.addAttribute("user", new User());
         return "views-user-signUp";
     }
 
-    @PostMapping("/saveUser")
+    @PostMapping("/signUp")
     public String signUp(@ModelAttribute User user, Model model)
     {
         try
@@ -101,5 +101,12 @@ public class UserController
         }
         model.addAttribute("user", user);
         return "views-user-profile";
+    }
+
+    @GetMapping("/cart")
+    public String cart(Principal principal, Model model)
+    {
+        model.addAttribute("userCart", userService.userWithItems(Integer.parseInt(principal.getName())));
+        return "views-user-cart";
     }
 }

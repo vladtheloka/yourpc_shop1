@@ -8,7 +8,6 @@ import com.yourpc_shop.entity.User;
 import com.yourpc_shop.service.BillableService;
 import com.yourpc_shop.service.ItemService;
 import com.yourpc_shop.service.UserService;
-import com.yourpc_shop.validator.billable.BillableValidationMessages;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+
+import java.security.Principal;
+import java.time.LocalDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Controller
 @Transactional
@@ -53,21 +58,7 @@ public class BillableController
     @PostMapping(value="/saveBillable")
     public String addBillable(@ModelAttribute Billable billable, Model model)
     {
-        try
-        {
-            billableService.add(billable);
-        }
-        catch (Exception e)
-        {
-            if(e.getMessage().equals(BillableValidationMessages.EMPTY_NAME_FIELD)
-                    || e.getMessage().equals(BillableValidationMessages.BILLABLENAME_ALREADY_EXIST))
-            {
-                model.addAttribute("billablenameException", e.getMessage());
-            }
-            model.addAttribute("users", userService.getAll());
-            model.addAttribute("items", itemService.getAll());
-            return "views-admin-billable";
-        }
+        billableService.add(billable);
         return "redirect:/";
     }
 
@@ -98,10 +89,10 @@ public class BillableController
         return "redirect:/";
     }
 
-    @GetMapping("/billableDetails/{name}")
-    public String billableDetails(@PathVariable String name, Model model)
+    @GetMapping("/billableDetails/{id}")
+    public String billableDetails(@PathVariable int id, Model model)
     {
-        Billable billable = billableService.findByName(name);
+        Billable billable = billableService.getOne(id);
         model.addAttribute("billable", billable);
         Hibernate.initialize(billable.getItem());
         return "views-user-billableDetails";
@@ -112,5 +103,27 @@ public class BillableController
     {
         model.addAttribute("billables", billableService.getBillableWithItems());
         return "views-admin-listOfBillables";
+    }
+
+    @GetMapping("/addToCart/{id}")
+    public String buy(Principal principal, @PathVariable int id)
+    {
+        billableService.addToCart(principal, id);
+        return "redirect:/";
+    }
+
+    @GetMapping("/deleteFromCart/{userId}/{itemId}")
+    public String deleteFromCart(@PathVariable int userId, @PathVariable int itemId)
+    {
+        billableService.deleteFromCart(userId, itemId);
+        return "redirect:/cart";
+    }
+
+    @PostMapping("/buy")
+    public String buy(Principal principal){
+
+        billableService.buy(Integer.parseInt(principal.getName()));
+
+        return "redirect:/profile";
     }
 }

@@ -32,6 +32,13 @@ public class Item extends AbstractEntity
     @Getter @Setter
     private Category category;
 
+    @Getter @Setter
+    @ManyToMany
+    @JoinTable(name = "user_item",
+            joinColumns = @JoinColumn(name = "itemId"),
+            inverseJoinColumns = @JoinColumn(name = "userId"))
+    private Set<User> users = new HashSet<>();
+
     @ManyToMany
     @JoinTable(name = "item_billable",
             joinColumns = @JoinColumn(name = "itemId"),

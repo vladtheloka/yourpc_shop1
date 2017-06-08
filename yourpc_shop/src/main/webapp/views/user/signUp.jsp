@@ -14,7 +14,7 @@
 
     <div class="tabs-content">
         <div id="signup-tab-content" class="active">
-            <form:form modelAttribute="user" class="signup-form" action="/saveUser" method="post">
+            <form:form modelAttribute="user" class="signup-form" method="post">
                 <div style="color: red">${emailException}</div>
                 <form:input path="email" type="text" class="input" id="user_email" autocomplete="off" placeholder="Email"/>
                 <div style="color: red">${usernameException}</div>

@@ -6,8 +6,8 @@
 <form:form modelAttribute="billableAttribute" method="post" action="${save}">
     <table>
         <tr>
-            <td><form:label path="name">Name:</form:label></td>
-            <td><form:input path="name"/></td>
+            <td><form:label path="localDateTime">Time:</form:label></td>
+            <td><form:input type="datetime-local" path="localDateTime"/></td>
         </tr>
 
         <tr>

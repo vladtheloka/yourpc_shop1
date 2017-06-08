@@ -34,6 +34,13 @@ public class User extends AbstractEntity implements UserDetails
     @Getter @Setter
     private Role role;
 
+    @Getter @Setter
+    @ManyToMany
+    @JoinTable(name = "user_item",
+            joinColumns = @JoinColumn(name = "userId"),
+            inverseJoinColumns = @JoinColumn(name = "itemId"))
+    private Set<Item> items = new HashSet<>();
+
     @OneToMany(mappedBy = "user")
     @Getter @Setter
     private Set<Billable> billable = new HashSet<>();

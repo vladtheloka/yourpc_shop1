@@ -12,4 +12,5 @@ public interface UserService
     User getOne(int id);
     List<User> getAll();
     User userWithBillables(int id);
+    User userWithItems(int id);
 }

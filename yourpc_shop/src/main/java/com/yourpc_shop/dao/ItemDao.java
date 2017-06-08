@@ -17,4 +17,7 @@ public interface ItemDao extends JpaRepository<Item, Integer>
 
     @Query("select distinct i from Item i left join fetch i.billable")
     Set<Billable> getItemWithBillables();
+
+    @Query("select i from Item i left join fetch i.users where i.id =:id")
+    Item itemWithUsers(@Param("id") int id);
 }

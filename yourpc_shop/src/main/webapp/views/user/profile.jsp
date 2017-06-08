@@ -24,7 +24,7 @@
                     <td><c:out value="${user.role}" /></td>
                     <td>
                     <c:forEach items="${user.billable}" var="billable">
-                    <a href="/billableDetails/${billable.name}">${billable.name}</a><br />
+                    <a href="/billableDetails/${billable.id}">BL000${billable.id}</a><br />
                     </c:forEach>
                     </td>
                 </tr>

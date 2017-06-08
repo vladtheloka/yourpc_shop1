@@ -3,6 +3,7 @@ package com.yourpc_shop.entity;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,9 +13,9 @@ import javax.persistence.*;
 @Table(name="billable")
 public class Billable extends AbstractEntity
 {
-    @Column(name="billableName")
+    @Column(name="billableTime")
     @Getter @Setter
-    private String name;
+    private LocalDateTime localDateTime;
 
     @ManyToOne
     @Getter @Setter
@@ -29,15 +30,15 @@ public class Billable extends AbstractEntity
 
     public Billable() {}
 
-    public Billable(String name)
+    public Billable(LocalDateTime localDateTime)
     {
         super();
-        this.name = name;
+        this.localDateTime = localDateTime;
     }
 
     @Override
     public String toString()
     {
-        return "Name: " + name + ", User: " + user + ", Item" + item;
+        return "Time: " + localDateTime + ", User: " + user + ", Item" + item;
     }
 }

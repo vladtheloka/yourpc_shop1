@@ -8,15 +8,19 @@
             <thead>
             <tr>
                 <th>ID</th>
-                <th>Name</th>
+                <th>Time</th>
                 <th>Items</th>
             </tr>
             </thead>
             <tbody>
             <tr>
             <td><c:out value="${billable.id}" /></td>
-            <td><c:out value="${billable.name}" /></td>
-            <td><c:out value="${billable.item}" /><br /></td>
+            <td><c:out value="${billable.localDateTime}" /></td>
+                <td>
+                    <c:forEach var="item" items="${billable.item}">
+                    <c:out value="${item.name}" /><br  />
+                    </c:forEach>
+                </td>
             </tr>
             </tbody>
         </table>

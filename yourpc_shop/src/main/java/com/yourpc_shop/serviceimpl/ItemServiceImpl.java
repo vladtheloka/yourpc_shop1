@@ -50,4 +50,10 @@ public class ItemServiceImpl implements ItemService
     {
         return itemDao.findAll();
     }
+
+    @Override
+    public Item itemWithUsers(int id)
+    {
+        return itemDao.itemWithUsers(id);
+    }
 }

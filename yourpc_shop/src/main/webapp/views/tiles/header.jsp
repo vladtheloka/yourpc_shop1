@@ -17,10 +17,13 @@
             <li class="active">
                 <a href="<c:url value="/profile"/>">profile</a>
             </li>
+                <li class="active">
+                    <a href="<c:url value="/cart"/>">Cart</a>
+                </li>
             </sec:authorize>
             <sec:authorize access="!isAuthenticated()">
             <li>
-                <a href="<c:url value="/signup"/>">sign up</a>
+                <a href="<c:url value="/signUp"/>">sign up</a>
             </li>
             </sec:authorize>
             <sec:authorize access="hasRole('ROLE_ADMIN')">
