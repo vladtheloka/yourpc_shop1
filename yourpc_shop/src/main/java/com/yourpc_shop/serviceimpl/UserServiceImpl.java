@@ -6,6 +6,8 @@ import com.yourpc_shop.entity.Role;
 import com.yourpc_shop.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -87,6 +89,12 @@ public class UserServiceImpl implements UserService, UserDetailsService
     public User findByUuid(String uuid)
     {
         return userDao.findByUuId(uuid);
+    }
+
+    @Override
+    public Page<User> findAllPages(Pageable pageable)
+    {
+        return userDao.findAll(pageable);
     }
 
     @Override

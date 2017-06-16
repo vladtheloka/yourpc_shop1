@@ -1,6 +1,5 @@
 package com.yourpc_shop.service;
 
-import java.security.Principal;
 import java.util.List;
 
 import com.yourpc_shop.entity.Item;

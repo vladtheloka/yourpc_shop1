@@ -1,7 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
-<%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
 
 <link rel="stylesheet" href="<c:url value="/css/index.css"/>">
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
@@ -29,7 +28,7 @@
     <!-- items -->
         <div class="items">
         <!-- single item -->
-        <c:forEach items="${items.content}" var="item">
+        <c:forEach items="${items}" var="item">
         <div class="item">
                 <img src="${item.pathImage}" alt="">
                 <h2><c:out value="${item.name}"/></h2>
@@ -43,28 +42,3 @@
     <!--/ items -->
 </div>
 <!--/ wrapper -->
-
-<div style="display: flex; justify-content: center;text-align: center">
-
-    <div class="col-md-12 col-xs-12">
-        <div class="row">
-            <div class="col-md-2 col-xs-6">
-                <div class="dropdown">
-                    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Sort <span
-                            class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        <custom:sort innerHtml="Name asc" paramValue="name"/>
-                        <custom:sort innerHtml="Name desc" paramValue="name,desc"/>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-md-10 col-xs-12 text-center">
-                <custom:pageable page="${items}" cell="<li></li>" container="<ul class='pagination'></ul>"/>
-            </div>
-            <div class="col-md-2 col-xs-6">
-                <custom:size posibleSizes="1,2,5,10" size="${items.size}"/>
-            </div>
-        </div>
-    </div>
-</div>

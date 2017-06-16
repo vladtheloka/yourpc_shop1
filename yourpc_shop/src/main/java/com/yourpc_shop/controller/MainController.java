@@ -23,16 +23,16 @@ public class MainController
     }
 
     @GetMapping("/")
-    public String index(Model model, @PageableDefault Pageable pageable)
+    public String index(Model model)
     {
-        model.addAttribute("items", itemService.findAllPages(pageable));
+        model.addAttribute("items", itemService.getAll());
         return "views-base-index";
     }
 
     @PostMapping("/")
-    public String indexAfterLogin(Model model, @PageableDefault Pageable pageable)
+    public String indexAfterLogin(Model model)
     {
-        model.addAttribute("items", itemService.findAllPages(pageable));
+        model.addAttribute("items", itemService.getAll());
         return "views-base-index";
     }
 }

@@ -3,6 +3,8 @@ package com.yourpc_shop.service;
 import java.util.List;
 
 import com.yourpc_shop.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface UserService
 {
@@ -14,4 +16,5 @@ public interface UserService
     User userWithBillables(int id);
     User userWithItems(int id);
     User findByUuid(String uuid);
+    Page<User> findAllPages(Pageable pageable);
 }

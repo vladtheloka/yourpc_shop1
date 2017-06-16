@@ -12,6 +12,8 @@ import com.yourpc_shop.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cglib.core.Local;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.yourpc_shop.dao.BillableDao;
@@ -125,5 +127,11 @@ public class BillableServiceImpl implements BillableService
         {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Page<Billable> findAllPages(Pageable pageable)
+    {
+        return billableDao.findAll(pageable);
     }
 }

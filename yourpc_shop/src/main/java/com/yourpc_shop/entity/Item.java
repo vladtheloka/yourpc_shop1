@@ -24,10 +24,6 @@ public class Item extends AbstractEntity
     @Getter @Setter
     private int price;
 
-//    @Column(name="itemImage", columnDefinition = "mediumblob")
-//    @Getter @Setter
-//    private byte[] image;
-
     @Column(name = "image")
     @Getter @Setter
     private String pathImage;

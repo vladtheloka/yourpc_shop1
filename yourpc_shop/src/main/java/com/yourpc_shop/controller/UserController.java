@@ -5,6 +5,8 @@ import com.yourpc_shop.service.MailSenderService;
 import com.yourpc_shop.validator.user.UserValidationMessages;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -127,9 +129,9 @@ public class UserController
     }
 
     @GetMapping("/listOfUsers")
-    public String allItems(Model model)
+    public String allItems(Model model, @PageableDefault Pageable pageable)
     {
-        model.addAttribute("users", userService.getAll());
+        model.addAttribute("users", userService.findAllPages(pageable));
         return "views-admin-listOfUsers";
     }
 

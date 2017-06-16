@@ -10,6 +10,8 @@ import com.yourpc_shop.service.ItemService;
 import com.yourpc_shop.service.UserService;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
@@ -92,8 +94,14 @@ public class BillableController {
     }
 
     @GetMapping("/listOfBillables")
-    public String allBillables(Model model) {
-        model.addAttribute("billables", billableService.getBillableWithItems());
+    public String allBillables(Model model, @PageableDefault Pageable pageable)
+    {
+        Set<Billable> billables = billableService.getBillableWithItems();
+        for (Billable billable: billables)
+        {
+            Hibernate.initialize(billable.getItem());
+        }
+        model.addAttribute("billables", billableService.findAllPages(pageable));
         return "views-admin-listOfBillables";
     }
 

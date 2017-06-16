@@ -1,12 +1,12 @@
 package com.yourpc_shop.service;
 
 import java.security.Principal;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
 
 import com.yourpc_shop.entity.Billable;
-import com.yourpc_shop.entity.Item;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface BillableService
 {
@@ -21,4 +21,5 @@ public interface BillableService
     void buy(int userId);
     void getTotalPrice(int id);
     void makeSleep();
+    Page<Billable> findAllPages(Pageable pageable);
 }
