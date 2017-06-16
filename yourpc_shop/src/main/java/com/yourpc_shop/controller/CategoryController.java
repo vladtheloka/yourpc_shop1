@@ -72,7 +72,7 @@ public class CategoryController
     }
 
     @GetMapping("/listOfCategories")
-    public String allItems(Model model)
+    public String allCategories(Model model)
     {
         model.addAttribute("categories", categoryService.getAll());
         return "views-admin-listOfCategories";

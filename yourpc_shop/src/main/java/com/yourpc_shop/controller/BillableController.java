@@ -24,8 +24,7 @@ import java.util.Set;
 
 @Controller
 @Transactional
-public class BillableController
-{
+public class BillableController {
     private final BillableService billableService;
 
     private final UserService userService;
@@ -40,38 +39,33 @@ public class BillableController
     }
 
     @InitBinder
-    public void init(WebDataBinder binder)
-    {
+    public void init(WebDataBinder binder) {
         binder.registerCustomEditor(User.class, new UserEditor());
         binder.registerCustomEditor(Item.class, new ItemEditor());
     }
 
-    @GetMapping(value="/billable")
-    public String addBillable(Model model)
-    {
+    @GetMapping(value = "/billable")
+    public String addBillable(Model model) {
         model.addAttribute("billable", new Billable());
         model.addAttribute("users", userService.getAll());
         model.addAttribute("items", itemService.getAll());
         return "views-admin-billable";
     }
 
-    @PostMapping(value="/saveBillable")
-    public String addBillable(@ModelAttribute Billable billable, Model model)
-    {
+    @PostMapping(value = "/saveBillable")
+    public String addBillable(@ModelAttribute Billable billable, Model model) {
         billableService.add(billable);
         return "redirect:/";
     }
 
-    @GetMapping(value="/deleteBillable/{id}")
-    public String deleteBillable(@PathVariable int id)
-    {
+    @GetMapping(value = "/deleteBillable/{id}")
+    public String deleteBillable(@PathVariable int id) {
         billableService.delete(id);
         return "redirect:/";
     }
 
-    @GetMapping(value="/updateBillable/{id}")
-    public String getBillable(@PathVariable int id, Model model)
-    {
+    @GetMapping(value = "/updateBillable/{id}")
+    public String getBillable(@PathVariable int id, Model model) {
         model.addAttribute("billableAttribute", billableService.getOne(id));
         Billable billable = billableService.getOne(id);
         Hibernate.initialize(billable.getItem());
@@ -80,9 +74,8 @@ public class BillableController
         return "views-admin-updateBillable";
     }
 
-    @PostMapping(value="/updateBillable/{id}")
-    public String updateBillable(@ModelAttribute Billable billable, @PathVariable int id, Model model)
-    {
+    @PostMapping(value = "/updateBillable/{id}")
+    public String updateBillable(@ModelAttribute Billable billable, @PathVariable int id, Model model) {
         billable.setId(id);
         billableService.update(billable);
         model.addAttribute("billables", billableService.getAll());
@@ -90,40 +83,37 @@ public class BillableController
     }
 
     @GetMapping("/billableDetails/{id}")
-    public String billableDetails(@PathVariable int id, Model model)
-    {
+    public String billableDetails(@PathVariable int id, Model model) {
         Billable billable = billableService.getOne(id);
+        billableService.getTotalPrice(id);
         model.addAttribute("billable", billable);
         Hibernate.initialize(billable.getItem());
         return "views-user-billableDetails";
     }
 
     @GetMapping("/listOfBillables")
-    public String allItems(Model model)
-    {
+    public String allBillables(Model model) {
         model.addAttribute("billables", billableService.getBillableWithItems());
         return "views-admin-listOfBillables";
     }
 
     @GetMapping("/addToCart/{id}")
-    public String buy(Principal principal, @PathVariable int id)
-    {
+    public String buy(Principal principal, @PathVariable int id) {
+        billableService.makeSleep();
         billableService.addToCart(principal, id);
         return "redirect:/";
     }
 
     @GetMapping("/deleteFromCart/{userId}/{itemId}")
-    public String deleteFromCart(@PathVariable int userId, @PathVariable int itemId)
-    {
+    public String deleteFromCart(@PathVariable int userId, @PathVariable int itemId) {
         billableService.deleteFromCart(userId, itemId);
         return "redirect:/cart";
     }
 
     @PostMapping("/buy")
-    public String buy(Principal principal){
-
+    public String buy(Principal principal)
+    {
         billableService.buy(Integer.parseInt(principal.getName()));
-
         return "redirect:/profile";
     }
 }

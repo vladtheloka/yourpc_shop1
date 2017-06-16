@@ -15,7 +15,9 @@ input {
 body {
     color: #666;
     background-color: #f1f2f2;
-    font: 16px/26px "Raleway", sans-serif; }
+    font: 16px/26px "Raleway", sans-serif;
+    margin-top: 100px;
+}
 
 .form-wrap {
     background-color: #fff;

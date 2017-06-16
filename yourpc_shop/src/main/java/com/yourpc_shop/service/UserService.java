@@ -13,4 +13,5 @@ public interface UserService
     List<User> getAll();
     User userWithBillables(int id);
     User userWithItems(int id);
+    User findByUuid(String uuid);
 }

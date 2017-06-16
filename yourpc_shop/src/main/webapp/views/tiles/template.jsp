@@ -4,10 +4,7 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="<c:url value="/bootstrap/bootstrap-theme.css"/>">
-    <link rel="stylesheet" href="<c:url value="/bootstrap/bootstrap.css"/>">
     <link rel="stylesheet" href="<c:url value="/css/header.css"/>">
-    <script src="<c:url value="/js/header.js"/>"></script>
     <meta charset="UTF-8">
 </head>
 <body>

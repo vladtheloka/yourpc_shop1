@@ -35,6 +35,12 @@ public class User extends AbstractEntity implements UserDetails
     private Role role;
 
     @Getter @Setter
+    private boolean enable;
+
+    @Getter @Setter
+    private String uuId;
+
+    @Getter @Setter
     @ManyToMany
     @JoinTable(name = "user_item",
             joinColumns = @JoinColumn(name = "userId"),
@@ -98,6 +104,6 @@ public class User extends AbstractEntity implements UserDetails
     @Override
     public boolean isEnabled()
     {
-        return true;
+        return enable;
     }
 }

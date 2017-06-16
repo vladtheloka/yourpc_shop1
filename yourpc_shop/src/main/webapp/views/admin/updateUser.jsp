@@ -1,10 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-
-    <link rel="stylesheet" href="<c:url value="/css/updateUser.css"/>">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="<c:url value="/js/updateUser.js"/>"></script>
+<link rel="stylesheet" href="<c:url value="/css/updateUser.css"/>">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="<c:url value="/js/updateUser.js"/>"></script>
 
 <div class="form-wrap">
     <div class="tabs-content">

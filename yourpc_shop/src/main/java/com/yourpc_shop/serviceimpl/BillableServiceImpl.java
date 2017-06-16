@@ -100,4 +100,30 @@ public class BillableServiceImpl implements BillableService
         user.getItems().clear();
         userDao.save(user);
     }
+
+    @Override
+    public void getTotalPrice(int id)
+    {
+        Billable billable = billableDao.getOne(id);
+        Set<Item> items = billable.getItem();
+        int price = 0 ;
+        for (Item item: items)
+        {
+            price += item.getPrice();
+            billable.setPrice(price);
+        }
+    }
+
+    @Override
+    public void makeSleep()
+    {
+        try
+        {
+            Thread.sleep(3000);
+        }
+        catch(InterruptedException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

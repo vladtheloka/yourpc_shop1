@@ -19,4 +19,6 @@ public interface BillableService
     void addToCart(Principal principal, int id);
     void deleteFromCart(int userId, int itemId);
     void buy(int userId);
+    void getTotalPrice(int id);
+    void makeSleep();
 }

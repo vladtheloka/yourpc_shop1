@@ -1,15 +1,22 @@
 package com.yourpc_shop.serviceimpl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import com.yourpc_shop.validator.Validator;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.yourpc_shop.dao.ItemDao;
 import com.yourpc_shop.entity.Item;
 import com.yourpc_shop.service.ItemService;
+
+import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ItemServiceImpl implements ItemService
@@ -25,9 +32,25 @@ public class ItemServiceImpl implements ItemService
         this.validator = validator;
     }
 
-    public void add(Item item) throws Exception
+    public void add(Item item, MultipartFile multipartFile) throws Exception
     {
         validator.validate(item);
+
+        String path = System.getProperty("catalina.home") + "/resources/"
+                + item.getName() + "/" + multipartFile.getOriginalFilename();
+
+        item.setPathImage("resources/" + item.getName() + "/" + multipartFile.getOriginalFilename());
+
+        File file = new File(path);
+
+        try {
+            file.mkdirs();
+            multipartFile.transferTo(file);
+        }
+        catch (IOException e)
+        {
+            System.out.println("error with file");
+        }
         itemDao.save(item);
     }
 
@@ -36,8 +59,23 @@ public class ItemServiceImpl implements ItemService
         itemDao.delete(id);
     }
 
-    public void update(Item item)
+    public void update(Item item, MultipartFile multipartFile)
     {
+        String path = System.getProperty("catalina.home") + "/resources/"
+                + item.getName() + "/" + multipartFile.getOriginalFilename();
+
+        item.setPathImage("resources/" + item.getName() + "/" + multipartFile.getOriginalFilename());
+
+        File file = new File(path);
+
+        try {
+            file.mkdirs();
+            multipartFile.transferTo(file);
+        }
+        catch (IOException e)
+        {
+            System.out.println("error with file");
+        }
         itemDao.save(item);
     }
 
@@ -55,5 +93,11 @@ public class ItemServiceImpl implements ItemService
     public Item itemWithUsers(int id)
     {
         return itemDao.itemWithUsers(id);
+    }
+
+    @Override
+    public Page<Item> findAllPages(Pageable pageable)
+    {
+        return itemDao.findAll(pageable);
     }
 }

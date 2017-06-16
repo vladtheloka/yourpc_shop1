@@ -7,11 +7,14 @@ import com.yourpc_shop.service.CategoryService;
 import com.yourpc_shop.service.ItemService;
 import com.yourpc_shop.validator.item.ItemValidationMessages;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @Transactional
@@ -42,11 +45,11 @@ public class ItemController
     }
 
     @PostMapping("/saveItem")
-    public String addItem(@ModelAttribute Item item, Model model)
+    public String addItem(@ModelAttribute Item item, Model model, @RequestParam("image") MultipartFile image)
     {
         try
         {
-            itemService.add(item);
+            itemService.add(item, image);
         }
         catch (Exception e)
         {
@@ -85,18 +88,18 @@ public class ItemController
     }
 
     @PostMapping("/updateItem/{id}")
-    public  String updateItem(@ModelAttribute Item item, @PathVariable int id, Model model)
+    public  String updateItem(@ModelAttribute Item item, @PathVariable int id, Model model, @RequestParam("image") MultipartFile image)
     {
         item.setId(id);
-        itemService.update(item);
+        itemService.update(item, image);
         model.addAttribute("items", itemService.getAll());
         return "redirect:/";
     }
 
     @GetMapping("/listOfItems")
-    public String allItems(Model model)
+    public String allItems(Model model, @PageableDefault Pageable pageable)
     {
-        model.addAttribute("items", itemService.getAll());
+        model.addAttribute("items", itemService.findAllPages(pageable));
         return "views-admin-listOfItems";
     }
 }

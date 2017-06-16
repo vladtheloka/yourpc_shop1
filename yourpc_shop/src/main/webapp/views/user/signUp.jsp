@@ -25,10 +25,10 @@
                 <form:input path="address" type="text" class="input" id="user_address" autocomplete="off" placeholder="Address"/>
                 <input type="submit" class="button" value="Sign Up">
             </form:form><!--.login-form-->
-            <div class="help-text">
-                <p>By signing up, you agree to our</p>
-                <p><a href="#">Terms of service</a></p>
-            </div><!--.help-text-->
+            <%--<div class="help-text">--%>
+                <%--<p>By signing up, you agree to our</p>--%>
+                <%--<p><a href="#">Terms of service</a></p>--%>
+            <%--</div><!--.help-text-->--%>
         </div><!--.signup-tab-content-->
 
         <div id="login-tab-content">
@@ -38,9 +38,9 @@
                 <input type="submit" class="button" value="Login">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             </form><!--.login-form-->
-            <div class="help-text">
-                <p><a href="#">Forget your password?</a></p>
-            </div><!--.help-text-->
+            <%--<div class="help-text">--%>
+                <%--<p><a href="#">Forget your password?</a></p>--%>
+            <%--</div><!--.help-text-->--%>
         </div><!--.login-tab-content-->
     </div><!--.tabs-content-->
 </div><!--.form-wrap-->

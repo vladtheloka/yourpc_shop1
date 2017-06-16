@@ -17,6 +17,9 @@ public class Billable extends AbstractEntity
     @Getter @Setter
     private LocalDateTime localDateTime;
 
+    @Getter @Setter
+    private int price;
+
     @ManyToOne
     @Getter @Setter
     private User user;

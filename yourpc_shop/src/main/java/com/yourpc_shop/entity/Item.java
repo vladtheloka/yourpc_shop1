@@ -24,9 +24,13 @@ public class Item extends AbstractEntity
     @Getter @Setter
     private int price;
 
-    @Column(name="itemImage", columnDefinition = "mediumblob")
+//    @Column(name="itemImage", columnDefinition = "mediumblob")
+//    @Getter @Setter
+//    private byte[] image;
+
+    @Column(name = "image")
     @Getter @Setter
-    private byte[] image;
+    private String pathImage;
 
     @ManyToOne
     @Getter @Setter
@@ -48,13 +52,12 @@ public class Item extends AbstractEntity
 
     public Item() {}
 
-    public Item(String name, String content, int price, byte[] image)
+    public Item(String name, String content, int price)
     {
         super();
         this.name = name;
         this.content = content;
         this.price = price;
-        this.image = image;
     }
 
     @Override
