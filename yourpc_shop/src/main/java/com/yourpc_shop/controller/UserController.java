@@ -2,9 +2,12 @@ package com.yourpc_shop.controller;
 
 import com.yourpc_shop.entity.Billable;
 import com.yourpc_shop.service.MailSenderService;
+import com.yourpc_shop.validator.Validator;
 import com.yourpc_shop.validator.user.UserValidationMessages;
+import com.yourpc_shop.validator.userLoginValidation.UserLoginValidationMessages;
 import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
@@ -25,14 +28,16 @@ public class UserController
 {
     private final UserService userService;
 
-    @Autowired
     private final MailSenderService mailSenderService;
 
+    private final Validator validator;
+
     @Autowired
-    public UserController(UserService userService, MailSenderService mailSenderService)
+    public UserController(UserService userService, MailSenderService mailSenderService, @Qualifier("userLoginValidator") Validator validator)
     {
         this.userService = userService;
         this.mailSenderService = mailSenderService;
+        this.validator = validator;
     }
 
     @GetMapping("/signUp")
@@ -143,5 +148,27 @@ public class UserController
 
         userService.update(user);
         return "redirect:/";
+    }
+
+    @PostMapping("/failureLogin")
+    public String failureLogin(Model model, @RequestParam String username,
+                               @RequestParam String password){
+
+        try
+        {
+            validator.validate(new User(username, password));
+        }
+        catch (Exception e)
+        {
+            if(e.getMessage().equals(UserLoginValidationMessages.EMPTY_USERNAME_FIELD)||
+                    e.getMessage().equals(UserLoginValidationMessages.EMPTY_PASSWORD_FIELD)||
+                    e.getMessage().equals(UserLoginValidationMessages.WRONG_USERNAME_OR_PASSWORD))
+            {
+                model.addAttribute("exception", e.getMessage());
+            }
+        }
+        model.addAttribute("user", new User());
+
+        return "views-user-signUp";
     }
 }

@@ -3,6 +3,7 @@
 <%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <div>
@@ -55,7 +56,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-10 col-xs-12 text-center">
+            <div class="col-md-6 col-xs-12 text-center">
                 <custom:pageable page="${billables}" cell="<li></li>" container="<ul class='pagination'></ul>"/>
             </div>
             <div class="col-md-2 col-xs-6">

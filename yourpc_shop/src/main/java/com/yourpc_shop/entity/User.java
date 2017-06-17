@@ -53,6 +53,12 @@ public class User extends AbstractEntity implements UserDetails
 
     public User() {}
 
+    public User(String name, String password)
+    {
+        this.name = name;
+        this.password = password;
+    }
+
     public User(String name, String email, String password, String address)
     {
         super();

@@ -30,6 +30,7 @@
         <tr>
             <td><form:label path="pathImage">Image:</form:label></td>
             <td><img src="/${itemAttribute.pathImage}" alt=""></td>
+            <td><form:input type="hidden" path="pathImage"/></td>
         </tr>
 
         <tr>

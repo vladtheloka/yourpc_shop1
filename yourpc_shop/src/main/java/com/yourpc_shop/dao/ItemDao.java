@@ -20,4 +20,6 @@ public interface ItemDao extends JpaRepository<Item, Integer>
 
     @Query("select i from Item i left join fetch i.users where i.id =:id")
     Item itemWithUsers(@Param("id") int id);
+
+
 }

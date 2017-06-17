@@ -56,6 +56,13 @@ public class Item extends AbstractEntity
         this.price = price;
     }
 
+    public Item(String name, String content, int price, String pathImage) {
+        this.name = name;
+        this.content = content;
+        this.price = price;
+        this.pathImage = pathImage;
+    }
+
     @Override
     public String toString()
     {

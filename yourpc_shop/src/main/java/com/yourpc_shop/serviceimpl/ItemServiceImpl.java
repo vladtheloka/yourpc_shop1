@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.List;
 
 import com.yourpc_shop.validator.Validator;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -34,16 +35,19 @@ public class ItemServiceImpl implements ItemService
     public void add(Item item, MultipartFile multipartFile) throws Exception
     {
         validator.validate(item);
-
-        String path = System.getProperty("catalina.home") + "/resources/"
-                + item.getName() + "/" + multipartFile.getOriginalFilename();
+        String path = "E:\\Downloads\\apache-tomcat-8.0.43\\resources\\" +
+                item.getName() + "\\" + multipartFile.getOriginalFilename();
 
         item.setPathImage("resources/" + item.getName() + "/" + multipartFile.getOriginalFilename());
 
         File file = new File(path);
 
-        try {
+        if(!file.exists())
+        {
             file.mkdirs();
+        }
+        try
+        {
             multipartFile.transferTo(file);
         }
         catch (IOException e)
@@ -60,15 +64,26 @@ public class ItemServiceImpl implements ItemService
 
     public void update(Item item, MultipartFile multipartFile)
     {
-        String path = System.getProperty("catalina.home") + "/resources/"
-                + item.getName() + "/" + multipartFile.getOriginalFilename();
+        String path = "E:\\Downloads\\apache-tomcat-8.0.43\\resources\\" +
+                item.getName() + "\\" + multipartFile.getOriginalFilename();
 
         item.setPathImage("resources/" + item.getName() + "/" + multipartFile.getOriginalFilename());
 
         File file = new File(path);
 
-        try {
+        try
+        {
             file.mkdirs();
+            try
+            {
+                FileUtils.cleanDirectory
+                        (new File(System.getProperty("catalina.home") + "/resources/"
+                                + item.getName() + "/"));
+            }
+            catch (IOException e)
+            {
+                e.printStackTrace();
+            }
             multipartFile.transferTo(file);
         }
         catch (IOException e)
@@ -99,4 +114,10 @@ public class ItemServiceImpl implements ItemService
     {
         return itemDao.findAll(pageable);
     }
+
+    @Override
+    public void update(Item item) {
+        itemDao.save(item);
+    }
+
 }

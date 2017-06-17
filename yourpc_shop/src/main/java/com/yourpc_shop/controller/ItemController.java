@@ -45,7 +45,7 @@ public class ItemController
     }
 
     @PostMapping("/saveItem")
-    public String addItem(@ModelAttribute Item item, Model model, @RequestParam("image") MultipartFile image)
+    public String addItem(@ModelAttribute Item item, Model model, @RequestAttribute("image") MultipartFile image)
     {
         try
         {
@@ -88,11 +88,18 @@ public class ItemController
     }
 
     @PostMapping("/updateItem/{id}")
-    public  String updateItem(@ModelAttribute Item item, @PathVariable int id, Model model, @RequestParam("image") MultipartFile image)
+    public  String updateItem(@ModelAttribute Item item, @PathVariable int id,
+                              @RequestAttribute("image") MultipartFile image)
     {
         item.setId(id);
-        itemService.update(item, image);
-        model.addAttribute("items", itemService.getAll());
+        if(image.isEmpty())
+        {
+            itemService.update(item);
+        }
+        else
+        {
+            itemService.update(item, image);
+        }
         return "redirect:/";
     }
 

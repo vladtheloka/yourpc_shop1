@@ -16,4 +16,5 @@ public interface ItemService
     List<Item> getAll();
     Item itemWithUsers(int id);
     Page<Item> findAllPages(Pageable pageable);
+    void update(Item item);
 }

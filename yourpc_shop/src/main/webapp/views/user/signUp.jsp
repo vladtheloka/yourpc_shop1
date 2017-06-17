@@ -6,6 +6,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="<c:url value="/js/signUp.js"/>"></script>
 
+<div style="text-align: center">${exception}</div>
+
 <div class="form-wrap">
     <div class="tabs">
         <h3 class="signup-tab"><a class="active" href="#signup-tab-content">Sign Up</a></h3>

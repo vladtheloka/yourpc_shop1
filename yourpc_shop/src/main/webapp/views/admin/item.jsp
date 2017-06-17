@@ -32,7 +32,7 @@
 
         <tr>
             <td><form:label path="pathImage">Image:</form:label></td>
-            <td><input  type="file" name="image"/></td>
+            <td><input  type="file" name="image" required="required"/></td>
         </tr>
     </table>
     <input type="submit" value="Save" />

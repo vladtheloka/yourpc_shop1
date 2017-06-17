@@ -1,7 +1,6 @@
 
 body {
-    padding-top: 110px;
-    padding-bottom: 80px;
+    padding-top: 100px;
 }
 
 .container {
@@ -16,6 +15,11 @@ body {
     background: #3ab7a5;
     padding: 10px 0;
     color: #fff;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)";
+    filter: alpha(opacity=80);
+    -moz-opacity: 0.80;
+    -khtml-opacity: 0.8;
+    opacity: 0.8;
 }
 
 .fixed-header {
@@ -24,7 +28,9 @@ body {
 
 .fixed-footer {
     bottom: 0;
+    height: 40px;
 }
+
 
 nav a {
     color: #fff;
