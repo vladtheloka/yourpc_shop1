@@ -51,8 +51,8 @@
                             class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <custom:sort innerHtml="Name asc" paramValue="localDateTime"/>
-                        <custom:sort innerHtml="Name desc" paramValue="localDateTime,desc"/>
+                        <custom:sort innerHtml="Date asc" paramValue="localDateTime"/>
+                        <custom:sort innerHtml="Date desc" paramValue="localDateTime,desc"/>
                     </ul>
                 </div>
             </div>
