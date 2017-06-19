@@ -8,7 +8,11 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="<c:url value="/js/signUp.js"/>"></script>
 
-<div style="text-align: center">${exception}</div>
+<div style="color: red; text-align: center">${exception}</div>
+<div style="color: red; text-align: center">${emailException}</div>
+<div style="color: red; text-align: center">${usernameException}</div>
+<div style="color: red; text-align: center">${passwordException}</div>
+<div style="color: red; text-align: center">${addressException}</div>
 
 <div class="form-wrap">
     <div class="tabs">
@@ -19,16 +23,12 @@
     <div class="tabs-content">
         <div id="signup-tab-content" class="active">
             <form:form modelAttribute="user" class="signup-form" method="post">
-                <div style="color: red">${emailException}</div>
                 <form:input path="email" type="text" class="input" id="user_email" autocomplete="off"
                             placeholder="Email"/>
-                <div style="color: red">${usernameException}</div>
                 <form:input path="name" type="text" class="input" id="user_name" autocomplete="off"
                             placeholder="Username"/>
-                <div style="color: red">${passwordException}</div>
                 <form:input path="password" type="password" class="input" id="user_pass" autocomplete="off"
                             placeholder="Password"/>
-                <div style="color: red">${addressException}</div>
                 <form:input path="address" type="text" class="input" id="user_address" autocomplete="off"
                             placeholder="Address"/>
                 <input type="submit" class="button" value="Sign Up">
@@ -43,7 +43,7 @@
             <form class="login-form" action="<c:url value="/login"/>" method="post">
                 <input name="username" type="text" class="input" id="user_login" autocomplete="off"
                        placeholder="Email or Username">
-                <input name="password" type="password" class="input" id="user_pass1" autocomplete="off"
+                <input name="password" type="password" class="input" id="user_pass" autocomplete="off"
                        placeholder="Password">
                 <input type="submit" class="button" value="Login">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

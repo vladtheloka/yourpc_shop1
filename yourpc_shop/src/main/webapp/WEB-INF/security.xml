@@ -8,7 +8,8 @@
 
     <security:http use-expressions="true">
         <security:form-login  login-page="/signUp" login-processing-url="/login"
-                              authentication-success-forward-url="/"/>
+                              authentication-success-forward-url="/"
+                              authentication-failure-forward-url="/failureLogin"/>
         <security:logout logout-url="/logout" logout-success-url="/"/>
         <security:intercept-url pattern="/listOfItems" access="hasRole('ROLE_ADMIN')"/>
         <security:intercept-url pattern="/listOfCategories" access="hasRole('ROLE_ADMIN')"/>
