@@ -1,6 +1,5 @@
 package com.yourpc_shop.controller;
 
-import com.yourpc_shop.entity.Item;
 import com.yourpc_shop.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
@@ -9,9 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 @Transactional
@@ -33,10 +29,18 @@ public class MainController
     }
 
     @PostMapping("/")
-    public String indexAfterLogin(Model model, @PageableDefault Pageable pageable)
+    public String indexAfterLogin(Model model, @PageableDefault Pageable pageable, @RequestParam String username)
     {
-        model.addAttribute("items", itemService.findAllPages(pageable));
-        return "views-base-index";
+        if(username.equals("admin"))
+        {
+            model.addAttribute("items", itemService.findAllPages(pageable));
+            return "views-admin-listOfItems";
+        }
+        else
+        {
+            model.addAttribute("items", itemService.findAllPages(pageable));
+            return "views-base-index";
+        }
     }
 
     @GetMapping("/all")

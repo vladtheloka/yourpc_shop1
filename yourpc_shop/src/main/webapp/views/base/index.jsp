@@ -46,13 +46,6 @@
         <li><span class="filter" onclick="window.location.href='/case'">Case</span></li>
         <li><span class="filter" onclick="window.location.href='/storage'">Storage</span></li>
     </ul>
-    <%--<button onclick="window.location.href='/all'">All</button>--%>
-    <%--<button onclick="window.location.href='/cpu'">CPU</button>--%>
-    <%--<button onclick="window.location.href='/gpu'">GPU</button>--%>
-    <%--<button onclick="window.location.href='/ram'">RAM</button>--%>
-    <%--<button onclick="window.location.href='/psu'">PSU</button>--%>
-    <%--<button onclick="window.location.href='/case'">Case</button>--%>
-    <%--<button onclick="window.location.href='/storage'">Storage</button>--%>
 </div>
 
 <div class="wrapper">
