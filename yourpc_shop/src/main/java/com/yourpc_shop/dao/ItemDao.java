@@ -1,6 +1,8 @@
 package com.yourpc_shop.dao;
 
 import com.yourpc_shop.entity.Billable;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -21,5 +23,28 @@ public interface ItemDao extends JpaRepository<Item, Integer>
     @Query("select i from Item i left join fetch i.users where i.id =:id")
     Item itemWithUsers(@Param("id") int id);
 
+    @Query(value = "select i from Item i where i.category.name='CPU'",
+            countQuery = "select count(i) from Item i where i.category.name='CPU'")
+    Page<Item> allCpu(Pageable pageable);
+
+    @Query(value = "select i from Item i where i.category.name='GPU'",
+            countQuery = "select count(i) from Item i where i.category.name='GPU'")
+    Page<Item> allGpu(Pageable pageable);
+
+    @Query(value = "select i from Item i where i.category.name='RAM'",
+            countQuery = "select count(i) from Item i where i.category.name='RAM'")
+    Page<Item> allRam(Pageable pageable);
+
+    @Query(value = "select i from Item i where i.category.name='PSU'",
+            countQuery = "select count(i) from Item i where i.category.name='PSU'")
+    Page<Item> allPsu(Pageable pageable);
+
+    @Query(value = "select i from Item i where i.category.name='Case'",
+            countQuery = "select count(i) from Item i where i.category.name='Case'")
+    Page<Item> allCase(Pageable pageable);
+
+    @Query(value = "select i from Item i where i.category.name='Storage'",
+            countQuery = "select count(i) from Item i where i.category.name='Storage'")
+    Page<Item> allStorage(Pageable pageable);
 
 }

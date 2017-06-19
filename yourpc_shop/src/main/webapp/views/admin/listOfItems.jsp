@@ -1,9 +1,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
+
+<link rel="stylesheet" href="<c:url value="/css/listOfItems.css"/>">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
+
 
 <div>
     <div class="container">
@@ -43,7 +46,7 @@
     </div>
 </div>
 
-<div style="display: flex; justify-content: center;text-align: center">
+<div class="pageable" style="display: flex; justify-content: center;text-align: center">
 
     <div class="col-md-12 col-xs-12">
         <div class="row">

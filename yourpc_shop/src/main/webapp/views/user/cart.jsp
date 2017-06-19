@@ -9,6 +9,7 @@
     <table class="table table-hover">
         <thead>
         <tr>
+            <c:if test="${userCart.items.size() != 0}">
             <th>Item Id</th>
             <th>Name</th>
             <th>Price</th>
@@ -19,7 +20,10 @@
                 <form:form action="/buy" method="post">
                     <button class="btn btn-default">buy</button>
                 </form:form>
-
+            </c:if>
+            <c:if test="${userCart.items.size() == 0}">
+                Cart is empty!!!
+            </c:if>
         </tr>
         </thead>
         <tbody>
