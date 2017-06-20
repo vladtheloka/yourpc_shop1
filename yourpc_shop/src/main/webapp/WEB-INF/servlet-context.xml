@@ -25,6 +25,11 @@
                 <property name="sizeParameterName" value="size"/>
             </bean>
         </mvc:argument-resolvers>
+
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter"/>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
+        </mvc:message-converters>
     </mvc:annotation-driven>
     
     <mvc:resources mapping="/css/**" location="/css/"/>

@@ -22,9 +22,7 @@
             flyToElement($(itemImg), $('.cart_anchor'));
         });
     });
-</script>
 
-<script>
     $(function(){
         $("input[type='checkbox']").change(function(){
             var item=$(this);

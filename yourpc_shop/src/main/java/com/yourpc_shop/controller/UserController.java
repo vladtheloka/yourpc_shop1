@@ -145,7 +145,6 @@ public class UserController
     {
         User user = userService.findByUuid(uuid);
         user.setEnable(true);
-
         userService.update(user);
         return "redirect:/";
     }

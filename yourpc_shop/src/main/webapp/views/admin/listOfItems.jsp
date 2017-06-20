@@ -6,7 +6,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
+<script type='text/javascript' src="<c:url value="/js/listOfItems.js"/>"></script>
 
 <div>
     <div class="container">
@@ -16,7 +16,7 @@
         </form>
 
 
-        <table class="table table-hover">
+        <table id="myTable" class="table table-hover">
             <thead>
             <tr>
                 <th>Item Id</th>
@@ -26,6 +26,9 @@
                 <th>Category</th>
                 <th>Image</th>
                 <th colspan=2>Action</th>
+                <th><input type="text" class="form-control" id="search" onkeyup="myFunction()"
+                           placeholder="Search for names.."/>
+                </th>
             </tr>
             </thead>
             <tbody>
