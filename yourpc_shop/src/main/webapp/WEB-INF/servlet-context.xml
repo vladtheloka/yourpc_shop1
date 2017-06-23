@@ -41,4 +41,26 @@
         <property name="maxUploadSize" value="20000000"/>
     </bean>
 
+    <bean class="org.springframework.context.support.ReloadableResourceBundleMessageSource" id="messageSource">
+        <property name="basename" value="classpath:label"/>
+        <property name="defaultEncoding" value="UTF-8"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" id="localeChangeInterceptor">
+        <property name="paramName" value="lang"/>
+    </bean>
+
+    <bean class="com.yourpc_shop.serviceimpl.CookieThenAcceptHeaderLocaleResolver" id="localeResolver">
+        <property name="cookieMaxAge" value="3600"/>
+    </bean>
+
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping" id="handlerMapping">
+        <property name="interceptors" ref="localeChangeInterceptor"/>
+    </bean>
+
+    <mvc:interceptors>
+        <ref bean="localeChangeInterceptor"/>
+    </mvc:interceptors>
+
+
 </beans>

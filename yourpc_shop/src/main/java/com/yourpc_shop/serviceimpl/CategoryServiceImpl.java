@@ -30,9 +30,8 @@ public class CategoryServiceImpl implements CategoryService
         this.validator = validator;
     }
 
-    public void add(Category category) throws Exception
-    {
-        validator.validate(category);
+    public void add(Category category){
+//        validator.validate(category);
         categoryDao.save(category);
     }
 
@@ -48,8 +47,10 @@ public class CategoryServiceImpl implements CategoryService
         categoryDao.delete(id);
     }
 
-    public void update(Category category)
+    public void update(String categoryInfo)
     {
+        Category category = categoryDao.findOne(Integer.parseInt(categoryInfo.split("_")[1]));
+        category.setName(categoryInfo.split("_")[0]);
         categoryDao.save(category);
     }
 

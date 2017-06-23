@@ -1,19 +1,18 @@
 package com.yourpc_shop.controller;
 
+import com.yourpc_shop.dto.CategoryDto;
+import com.yourpc_shop.dto.DtoUtilMapper;
 import com.yourpc_shop.entity.Category;
 import com.yourpc_shop.service.CategoryService;
 import com.yourpc_shop.validator.category.CategoryValidationMessages;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller
-@Transactional
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
+
+@RestController
 public class CategoryController
 {
     private final CategoryService categoryService;
@@ -24,57 +23,29 @@ public class CategoryController
     }
 
     @GetMapping("/category")
-    public String addCategory(Model model)
+    public List<CategoryDto> loadCategories()
     {
-        model.addAttribute("category", new Category());
-        return "views-admin-category";
+        return DtoUtilMapper.categoriesToCategoriesDtos(categoryService.getAll());
     }
 
-    @PostMapping("/saveCategory")
-    public String addCategory(@ModelAttribute Category category, Model model)
+    @PostMapping("/category")
+    public List<CategoryDto> addCategory(@RequestBody Category category)
     {
-        try
-        {
-            categoryService.add(category);
-        }
-        catch (Exception e)
-        {
-            if(e.getMessage().equals(CategoryValidationMessages.EMPTY_CATEGORY_FIELD))
-            {
-                model.addAttribute("categoryException", e.getMessage());
-            }
-            return "views-admin-category";
-        }
-        return "redirect:/";
+        categoryService.add(category);
+        return DtoUtilMapper.categoriesToCategoriesDtos(categoryService.getAll());
     }
 
-    @GetMapping("/deleteCategory/{id}")
-    public String deleteCategory(@PathVariable int id)
+    @DeleteMapping("/category")
+    public List<CategoryDto> deleteCategory(@RequestBody String categoryId)
     {
-        categoryService.delete(id);
-        return "redirect:/";
+        categoryService.delete(Integer.valueOf(categoryId));
+        return DtoUtilMapper.categoriesToCategoriesDtos(categoryService.getAll());
     }
 
-    @GetMapping("/updateCategory/{id}")
-    public String getCategory(@PathVariable int id, Model model)
+    @PutMapping("/category")
+    public List<CategoryDto> updateCategory(@RequestBody String categoryInfo)
     {
-        model.addAttribute("categoryAttribute", categoryService.getOne(id));
-        return "views-admin-updateCategory";
-    }
-
-    @PostMapping("/updateCategory/{id}")
-    public  String updateRole(@ModelAttribute Category category, @PathVariable int id, Model model)
-    {
-        category.setId(id);
-        categoryService.update(category);
-        model.addAttribute("categories", categoryService.getAll());
-        return "redirect:/";
-    }
-
-    @GetMapping("/listOfCategories")
-    public String allCategories(Model model)
-    {
-        model.addAttribute("categories", categoryService.getAll());
-        return "views-admin-listOfCategories";
+        categoryService.update(categoryInfo);
+        return DtoUtilMapper.categoriesToCategoriesDtos(categoryService.getAll());
     }
 }

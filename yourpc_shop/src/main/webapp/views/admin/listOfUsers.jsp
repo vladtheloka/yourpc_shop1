@@ -49,7 +49,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="col-md-6 col-xs-12 text-center">
+            <div class="col-md-8 col-xs-12 text-center">
                 <custom:pageable page="${users}" cell="<li></li>" container="<ul class='pagination'></ul>"/>
             </div>
             <div class="col-md-2 col-xs-6">

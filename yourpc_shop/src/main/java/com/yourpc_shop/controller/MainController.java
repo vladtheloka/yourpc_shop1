@@ -91,4 +91,9 @@ public class MainController
         model.addAttribute("items", itemService.allStorage(pageable));
         return "views-base-index";
     }
+
+    @GetMapping("/openCategoryView")
+    public String category(){
+        return "views-admin-category";
+    }
 }
