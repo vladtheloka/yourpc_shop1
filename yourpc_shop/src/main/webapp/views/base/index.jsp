@@ -33,7 +33,7 @@
         });
     });
 </script>
-<div class="dropdown" style="float: left">
+<div class="dropdown" style="float: left; padding-left: 5px">
     <button class="dropdown-toggle; btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">
         Categories
     </button>
@@ -48,7 +48,7 @@
     </ul>
 </div>
 
-<div style="float: right"><input type="text" class="form-control" id="searchInList" oninput="searchInDiv()"
+<div style="float: right; padding-right: 5px"><input type="text" class="form-control" id="searchInList" oninput="searchInDiv()"
                                  placeholder="Search..."/>
 </div>
 
