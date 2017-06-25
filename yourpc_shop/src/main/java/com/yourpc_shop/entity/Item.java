@@ -48,19 +48,19 @@ public class Item extends AbstractEntity
 
     public Item() {}
 
-    public Item(String name, String content, int price)
-    {
-        super();
+    public Item(String name, String content, int price, Category category) {
         this.name = name;
         this.content = content;
         this.price = price;
+        this.category = category;
     }
 
-    public Item(String name, String content, int price, String pathImage) {
+    public Item(String name, String content, int price, String pathImage, Category category) {
         this.name = name;
         this.content = content;
         this.price = price;
         this.pathImage = pathImage;
+        this.category = category;
     }
 
     @Override

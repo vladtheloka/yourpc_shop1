@@ -26,12 +26,12 @@
                 <th>Category</th>
                 <th>Image</th>
                 <th colspan=2>Action</th>
-                <th><input type="text" class="form-control" id="search" onkeyup="myFunction()"
-                           placeholder="Search for names.."/>
+                <th><input type="text" class="form-control" id="searchIn" oninput="search()"
+                           placeholder="Search..."/>
                 </th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="searchResult">
             <c:forEach items="${items.content}" var="item">
                 <tr>
                     <td><c:out value="${item.id}"/></td>
@@ -73,3 +73,8 @@
         </div>
     </div>
 </div>
+
+<input type="hidden" name="csrf_name"
+       value="${_csrf.parameterName}"/>
+<input type="hidden" name="csrf_value"
+       value="${_csrf.token}"/>

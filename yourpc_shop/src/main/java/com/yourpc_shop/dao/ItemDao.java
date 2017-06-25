@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.yourpc_shop.entity.Item;
 
+import java.util.List;
 import java.util.Set;
 
 public interface ItemDao extends JpaRepository<Item, Integer>
@@ -46,5 +47,9 @@ public interface ItemDao extends JpaRepository<Item, Integer>
     @Query(value = "select i from Item i where i.category.name='Storage'",
             countQuery = "select count(i) from Item i where i.category.name='Storage'")
     Page<Item> allStorage(Pageable pageable);
+
+    @Query("select i from Item i where i.name like %:search%")
+    List<Item> searchItems(@Param("search") String search);
+
 
 }

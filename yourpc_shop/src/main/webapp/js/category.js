@@ -65,7 +65,17 @@ function updateCategory(categoryId) {
         url: '/category?' + $('input[name=csrf_name]').val() + "=" + $('input[name=csrf_value]').val(),
         method: 'GET',
         success: function (res) {
-            parseResultFromDb(res);
+            var categoriesFromDb = '';
+            for (var i in res) {
+
+                if(res[i].id == categoryId){
+                    categoriesFromDb += '<tr><td><input type="text" class="form-control" value="'+res[i].name+'" id="newCategoryName"></td><td><button class="btn btn-default save" onclick="saveCategoryUpdates(' + res[i].id + ')">Save</button></td></tr>';
+                }else{
+                    categoriesFromDb += '<tr><td id=' + res[i].id + "category" + '>' + res[i].name + '</td><td></td></tr>';
+                }
+
+            }
+            document.getElementById('result').innerHTML = categoriesFromDb;
         },
         error: function (err) {
             console.log(err)
@@ -75,7 +85,7 @@ function updateCategory(categoryId) {
 
 function saveCategoryUpdates(categoryId) {
 
-    var newName = $('#categoryName').val();
+    var newName = $('#newCategoryName').val();
 
     $.ajax({
 
@@ -83,6 +93,7 @@ function saveCategoryUpdates(categoryId) {
         method: 'PUT',
         data: newName+'_'+categoryId,
         success: function (res) {
+            console.log(newName);
             parseResultFromDb(res);
         },
         error: function (err) {

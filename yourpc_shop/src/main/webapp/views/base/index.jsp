@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type='text/javascript' src="<c:url value="/js/index.js"/>"></script>
+<script type='text/javascript' src="<c:url value="/js/search.js"/>"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
@@ -43,6 +44,8 @@
         <li><span class="filter" onclick="window.location.href='/psu'">PSU</span></li>
         <li><span class="filter" onclick="window.location.href='/case'">Case</span></li>
         <li><span class="filter" onclick="window.location.href='/storage'">Storage</span></li>
+        <li><input type="text" class="form-control" id="searchInList" oninput="searchInDiv()"
+                   placeholder="Search..."/></li>
     </ul>
 </div>
 
@@ -50,7 +53,7 @@
     <span><i class="cart_anchor"></i></span>
 
     <div class="clear"></div>
-    <div class="items">
+    <div id="searchDiv" class="items">
         <c:forEach items="${items.content}" var="item">
             <div class="item">
                 <img src="${item.pathImage}" alt="">
@@ -88,3 +91,8 @@
         </div>
     </div>
 </div>
+
+<input type="hidden" name="csrf_name"
+       value="${_csrf.parameterName}"/>
+<input type="hidden" name="csrf_value"
+       value="${_csrf.token}"/>

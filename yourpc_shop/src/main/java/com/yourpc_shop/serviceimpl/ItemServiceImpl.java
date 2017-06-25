@@ -156,4 +156,10 @@ public class ItemServiceImpl implements ItemService
     {
         itemDao.save(item);
     }
+
+    @Override
+    public List<Item> searchItems(String search)
+    {
+        return itemDao.searchItems(search);
+    }
 }
