@@ -24,29 +24,32 @@
         });
     });
 
-    $(function(){
-        $("input[type='checkbox']").change(function(){
-            var item=$(this);
-            if(item.is(":checked"))
-            {
-                window.location.href= item.data("target")
+    $(function () {
+        $("input[type='checkbox']").change(function () {
+            var item = $(this);
+            if (item.is(":checked")) {
+                window.location.href = item.data("target")
             }
         });
     });
 </script>
-
-<div class="filter">
-    <ul class="filter">
-        <li><span class="filter" onclick="window.location.href='/all'">All</span></li>
-        <li><span class="filter" onclick="window.location.href='/cpu'">CPU</span></li>
-        <li><span class="filter" onclick="window.location.href='/gpu'">GPU</span></li>
-        <li><span class="filter" onclick="window.location.href='/ram'">RAM</span></li>
-        <li><span class="filter" onclick="window.location.href='/psu'">PSU</span></li>
-        <li><span class="filter" onclick="window.location.href='/case'">Case</span></li>
-        <li><span class="filter" onclick="window.location.href='/storage'">Storage</span></li>
-        <li><input type="text" class="form-control" id="searchInList" oninput="searchInDiv()"
-                   placeholder="Search..."/></li>
+<div class="dropdown" style="float: left">
+    <button class="dropdown-toggle; btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">
+        Categories
+    </button>
+    <ul class="dropdown-menu" role="menu" style="margin: 1%; padding: 0; list-style: none">
+        <li><span onclick="window.location.href='/all'">All</span></li>
+        <li><span onclick="window.location.href='/cpu'">CPU</span></li>
+        <li><span onclick="window.location.href='/gpu'">GPU</span></li>
+        <li><span onclick="window.location.href='/ram'">RAM</span></li>
+        <li><span onclick="window.location.href='/psu'">PSU</span></li>
+        <li><span onclick="window.location.href='/case'">Case</span></li>
+        <li><span onclick="window.location.href='/storage'">Storage</span></li>
     </ul>
+</div>
+
+<div style="float: right"><input type="text" class="form-control" id="searchInList" oninput="searchInDiv()"
+                                 placeholder="Search..."/>
 </div>
 
 <div class="wrapper">
@@ -60,7 +63,8 @@
                 <h2><c:out value="${item.name}"/><p style="float: right">$<em>${item.price}</em></p></h2>
                 <sec:authorize access="isAuthenticated() && hasRole('ROLE_USER')">
                     <button style="margin: auto; display: block;" class="add-to-cart"
-                            onclick="window.location.href='/addToCart/${item.id}'">Add to cart</button>
+                            onclick="window.location.href='/addToCart/${item.id}'">Add to cart
+                    </button>
                 </sec:authorize>
             </div>
         </c:forEach>

@@ -38,7 +38,7 @@ h1 {
     margin: 0 10px 10px 0;
     width: 270px;
     padding: 10px;
-    height: 370px;
+    height: 380px;
 }
 
 .item img {
@@ -70,25 +70,20 @@ span {
     margin-bottom: 40px;
 }
 
-.filter{
-    margin:1%;
-    padding:0;
-    list-style:none;
-}
-
-.filter li {
-    float:left;
-}
-
-.filter li span {
+li {
     display: block;
-    padding:5px 20px;
+    float:left;
+
+}
+
+li span {
+    padding: 5px 45px 5px 15px;
     text-decoration:none;
     color:#666;
     cursor: pointer;
 }
 
-.filter li span.active {
+li span.active {
     background: #e95a44;
     color:#fff;
 }
