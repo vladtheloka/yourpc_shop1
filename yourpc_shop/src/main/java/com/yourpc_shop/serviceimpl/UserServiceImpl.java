@@ -44,6 +44,7 @@ public class UserServiceImpl implements UserService, UserDetailsService
         validator.validate(user);
         user.setRole(Role.ROLE_USER);
         user.setPassword(encoder.encode(user.getPassword()));
+        user.setBlock(true);
         userDao.save(user);
     }
 

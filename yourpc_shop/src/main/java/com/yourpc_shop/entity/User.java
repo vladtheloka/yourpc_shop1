@@ -38,6 +38,9 @@ public class User extends AbstractEntity implements UserDetails
     private boolean enable;
 
     @Getter @Setter
+    private boolean block;
+
+    @Getter @Setter
     private String uuId;
 
     @Getter @Setter
@@ -98,7 +101,7 @@ public class User extends AbstractEntity implements UserDetails
     @Override
     public boolean isAccountNonLocked()
     {
-        return true;
+        return block;
     }
 
     @Override

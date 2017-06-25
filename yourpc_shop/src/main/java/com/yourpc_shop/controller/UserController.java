@@ -170,4 +170,28 @@ public class UserController
 
         return "views-user-signUp";
     }
+
+    @GetMapping("/blockUser/{id}")
+    public String block(@PathVariable int id, Model model, @PageableDefault Pageable pageable)
+    {
+        User user = userService.getOne(id);
+        user.setBlock(false);
+        userService.update(user);
+        String theme = "Account blocked!!!";
+        String mailBody =
+                "Your account was blocked due to spam sending!!!" ;
+
+        mailSenderService.sendMail(theme, mailBody, user.getEmail());
+        model.addAttribute("users", userService.findAllPages(pageable));
+        return "views-admin-listOfUsers";
+    }
+
+    @GetMapping("/unblockUser/{id}")
+    public String unblock(@PathVariable int id, Model model, @PageableDefault Pageable pageable)
+    {
+        User user = userService.getOne(id);
+        user.setBlock(true);
+        model.addAttribute("users", userService.findAllPages(pageable));
+        return "views-admin-listOfUsers";
+    }
 }

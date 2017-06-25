@@ -15,19 +15,21 @@
                 <th>Email</th>
                 <th>Address</th>
                 <th>Role</th>
-                <th colspan=1>Action</th>
+                <th colspan=3>Action</th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${users.content}" var="user">
-            <tr>
-            <td><c:out value="${user.id}" /></td>
-            <td><c:out value="${user.name}" /></td>
-            <td><c:out value="${user.email}" /></td>
-            <td><c:out value="${user.address}" /></td>
-            <td><c:out value="${user.role}" /></td>
-            <td><a href="/deleteUser/${user.id}">Delete</a></td>
-            </tr>
+                <tr>
+                    <td><c:out value="${user.id}"/></td>
+                    <td><c:out value="${user.name}"/></td>
+                    <td><c:out value="${user.email}"/></td>
+                    <td><c:out value="${user.address}"/></td>
+                    <td><c:out value="${user.role}"/></td>
+                    <td><a href="/deleteUser/${user.id}">Delete</a></td>
+                    <td><a href="/blockUser/${user.id}">Block</a></td>
+                    <td><a href="/unblockUser/${user.id}">Unblock</a></td>
+                </tr>
             </c:forEach>
             </tbody>
         </table>
