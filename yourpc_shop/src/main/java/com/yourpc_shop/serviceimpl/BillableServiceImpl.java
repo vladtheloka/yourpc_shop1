@@ -107,11 +107,10 @@ public class BillableServiceImpl implements BillableService
     public void getTotalPrice(int id)
     {
         Billable billable = billableDao.getOne(id);
-        Set<Item> items = billable.getItem();
         int price = 0 ;
-        for (Item item: items)
+        for (Item item: billable.getItem())
         {
-            price += item.getPrice();
+            price += item.getPrice() * item.getQuantity();
             billable.setPrice(price);
         }
     }

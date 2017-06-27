@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <link rel="stylesheet" href="<c:url value="/css/listOfItems.css"/>">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -12,7 +13,7 @@
     <div class="container">
 
         <form action="<c:url value="/item"/>">
-            <input type="submit" value="Add Item"/>
+            <input type="submit" value="<spring:message code="label.AddItem"/>"/>
         </form>
 
 
@@ -40,8 +41,8 @@
                     <td><c:out value="${item.content}"/></td>
                     <td><c:out value="${item.category}"/></td>
                     <td><img src="${item.pathImage}" alt=""></td>
-                    <td><a href="/deleteItem/${item.id}">Delete</a></td>
-                    <td><a href="/updateItem/${item.id}">Update</a></td>
+                    <td><a href="/deleteItem/${item.id}"><spring:message code="label.Delete"/></a></td>
+                    <td><a href="/updateItem/${item.id}"><spring:message code="label.Update"/></a></td>
                 </tr>
             </c:forEach>
             </tbody>

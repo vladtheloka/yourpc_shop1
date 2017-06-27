@@ -21,8 +21,11 @@ public class Item extends AbstractEntity
     private String content;
 
     @Column(name="itemPrice")
-    @Getter @Setter
+    @Setter
     private int price;
+
+    @Getter @Setter
+    private int quantity;
 
     @Column(name = "image")
     @Getter @Setter
@@ -52,6 +55,7 @@ public class Item extends AbstractEntity
         this.name = name;
         this.content = content;
         this.price = price;
+        this.quantity = 1;
         this.category = category;
     }
 
@@ -61,6 +65,10 @@ public class Item extends AbstractEntity
         this.price = price;
         this.pathImage = pathImage;
         this.category = category;
+    }
+
+    public int getPrice() {
+        return price;
     }
 
     @Override

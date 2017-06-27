@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -26,9 +27,9 @@
                     <td><c:out value="${user.email}"/></td>
                     <td><c:out value="${user.address}"/></td>
                     <td><c:out value="${user.role}"/></td>
-                    <td><a href="/deleteUser/${user.id}">Delete</a></td>
-                    <td><a href="/blockUser/${user.id}">Block</a></td>
-                    <td><a href="/unblockUser/${user.id}">Unblock</a></td>
+                    <td><a href="/deleteUser/${user.id}"><spring:message code="label.Delete"/></a></td>
+                    <td><a href="/blockUser/${user.id}"><spring:message code="label.Block"/></a></td>
+                    <td><a href="/unblockUser/${user.id}"><spring:message code="label.Unblock"/></a></td>
                 </tr>
             </c:forEach>
             </tbody>

@@ -2,6 +2,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <link rel="stylesheet" href="<c:url value="/css/index.css"/>">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -35,7 +36,7 @@
 </script>
 <div class="dropdown" style="float: left; padding-left: 5px">
     <button class="dropdown-toggle; btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">
-        Categories
+        <spring:message code="label.Categories"/>
     </button>
     <ul class="dropdown-menu" role="menu" style="margin: 1%; padding: 0; list-style: none">
         <li><span onclick="window.location.href='/all'">All</span></li>
@@ -63,7 +64,7 @@
                 <h2><c:out value="${item.name}"/><p style="float: right">$<em>${item.price}</em></p></h2>
                 <sec:authorize access="isAuthenticated() && hasRole('ROLE_USER')">
                     <button style="margin: auto; display: block;" class="add-to-cart"
-                            onclick="window.location.href='/addToCart/${item.id}'">Add to cart
+                            onclick="window.location.href='/addToCart/${item.id}'"><spring:message code="label.AddToCart"/>
                     </button>
                 </sec:authorize>
             </div>
@@ -95,8 +96,3 @@
         </div>
     </div>
 </div>
-
-<input type="hidden" name="csrf_name"
-       value="${_csrf.parameterName}"/>
-<input type="hidden" name="csrf_value"
-       value="${_csrf.token}"/>

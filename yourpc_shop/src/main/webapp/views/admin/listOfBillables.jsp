@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -32,8 +33,8 @@
                     </c:forEach>
                     </td>
                     <td><c:out value="${billable.price}" /></td>
-                    <td><a href="/deleteBillable/${billable.id}">Delete</a></td>
-                    <td><a href="/updateBillable/${billable.id}">Update</a></td>
+                    <td><a href="/deleteBillable/${billable.id}"><spring:message code="label.Delete"/></a></td>
+                    <td><a href="/updateBillable/${billable.id}"><spring:message code="label.Update"/></a></td>
                 </tr>
             </c:forEach>
             </tbody>

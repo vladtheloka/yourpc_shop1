@@ -22,14 +22,12 @@
                 <a href="<c:url value="/openCategoryView"/>"><spring:message code="label.Categories"/></a>
                 <a href="<c:url value="/listOfBillables"/>"><spring:message code="label.Billables"/></a>
             </sec:authorize>
-            <a class="dropdown-toggle" data-toggle="dropdown" role="button"
-               aria-haspopup="true" aria-expanded="false">
-                <spring:message code="label.Lang"/> <span class="caret"></span>
-                <ul class="dropdown-menu">
+            <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                <spring:message code="label.Lang"/> <span class="caret"></span> </a>
+                <ul class="dropdown-menu" role="menu">
                     <li><a href="?lang=ua">ua</a></li>
                     <li><a href="?lang=en">en</a></li>
                 </ul>
-            </a>
             <sec:authorize access="isAuthenticated()">
                 <form:form action="/logout" method="post">
                     <button class="btn btn-default"><spring:message code="label.Logout"/></button>

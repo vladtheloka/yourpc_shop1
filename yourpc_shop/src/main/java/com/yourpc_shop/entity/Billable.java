@@ -44,4 +44,5 @@ public class Billable extends AbstractEntity
     {
         return "Time: " + localDateTime + ", User: " + user + ", Item" + item;
     }
+
 }

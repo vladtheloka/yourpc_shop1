@@ -19,9 +19,6 @@ import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
-import java.time.LocalDateTime;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -55,7 +52,7 @@ public class BillableController {
     }
 
     @PostMapping(value = "/saveBillable")
-    public String addBillable(@ModelAttribute Billable billable, Model model) {
+    public String addBillable(@ModelAttribute Billable billable) {
         billableService.add(billable);
         return "redirect:/";
     }
@@ -106,7 +103,7 @@ public class BillableController {
     }
 
     @GetMapping("/addToCart/{id}")
-    public String buy(Principal principal, @PathVariable int id) {
+    public String addToCart(Principal principal, @PathVariable int id) {
         billableService.makeSleep();
         billableService.addToCart(principal, id);
         return "redirect:/";
@@ -119,9 +116,16 @@ public class BillableController {
     }
 
     @PostMapping("/buy")
-    public String buy(Principal principal)
+    public String buy(Principal principal, @ModelAttribute("itemQuantity") Integer itemQuantity)
     {
+        User user = userService.getOne(Integer.parseInt(principal.getName()));
+        for (Item item: user.getItems())
+        {
+            item.setQuantity(itemQuantity);
+            itemService.update(item);
+        }
         billableService.buy(Integer.parseInt(principal.getName()));
+        System.out.println(itemQuantity);
         return "redirect:/profile";
     }
 }
