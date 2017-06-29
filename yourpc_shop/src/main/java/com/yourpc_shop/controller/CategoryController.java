@@ -4,12 +4,9 @@ import com.yourpc_shop.dto.CategoryDto;
 import com.yourpc_shop.dto.DtoUtilMapper;
 import com.yourpc_shop.entity.Category;
 import com.yourpc_shop.service.CategoryService;
-import com.yourpc_shop.validator.category.CategoryValidationMessages;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @RestController

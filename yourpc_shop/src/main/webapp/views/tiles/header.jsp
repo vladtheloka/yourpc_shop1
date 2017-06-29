@@ -7,7 +7,6 @@
 <div class="fixed-header">
     <div class="container">
         <nav>
-            <sec:authentication property="name"/>
             <sec:authorize access="hasRole('ROLE_USER')">
                 <a href="<c:url value="/"/>"><spring:message code="label.Home"/></a>
                 <a href="<c:url value="/profile"/>"><spring:message code="label.Profile"/></a>

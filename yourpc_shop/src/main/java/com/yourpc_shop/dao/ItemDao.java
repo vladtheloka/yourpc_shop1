@@ -48,6 +48,10 @@ public interface ItemDao extends JpaRepository<Item, Integer>
             countQuery = "select count(i) from Item i where i.category.name='Storage'")
     Page<Item> allStorage(Pageable pageable);
 
+    @Query(value = "select i from Item i where i.category.name='Motherboard'",
+            countQuery = "select count(i) from Item i where i.category.name='Motherboard'")
+    Page<Item> allMotherboard(Pageable pageable);
+
     @Query("select i from Item i where i.name like %:search%")
     List<Item> searchItems(@Param("search") String search);
 

@@ -152,6 +152,11 @@ public class ItemServiceImpl implements ItemService
     }
 
     @Override
+    public Page<Item> allMotherboard(Pageable pageable) {
+        return itemDao.allMotherboard(pageable);
+    }
+
+    @Override
     public void update(Item item)
     {
         itemDao.save(item);

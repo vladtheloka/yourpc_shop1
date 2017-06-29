@@ -22,6 +22,7 @@ public interface ItemService
     Page<Item> allPsu(Pageable pageable);
     Page<Item> allCase(Pageable pageable);
     Page<Item> allStorage(Pageable pageable);
+    Page<Item> allMotherboard(Pageable pageable);
     void update(Item item);
 
     List<Item> searchItems(String search);

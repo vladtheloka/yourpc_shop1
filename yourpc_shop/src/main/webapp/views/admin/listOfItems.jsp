@@ -3,7 +3,6 @@
 <%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<link rel="stylesheet" href="<c:url value="/css/listOfItems.css"/>">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -50,7 +49,7 @@
     </div>
 </div>
 
-<div class="pageable" style="display: flex; justify-content: center;text-align: center">
+<div style="display: flex; justify-content: center;text-align: center; margin-bottom: 40px">
 
     <div class="col-md-12 col-xs-12">
         <div class="row">

@@ -92,6 +92,13 @@ public class MainController
         return "views-base-index";
     }
 
+    @GetMapping("/motherboard")
+    public String allMotherboards(Model model, @PageableDefault Pageable pageable)
+    {
+        model.addAttribute("items", itemService.allMotherboard(pageable));
+        return "views-base-index";
+    }
+
     @GetMapping("/openCategoryView")
     public String category(){
         return "views-admin-category";

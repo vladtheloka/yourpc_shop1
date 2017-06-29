@@ -42,7 +42,7 @@
     </div>
 </div>
 
-<div style="display: flex; justify-content: center;text-align: center">
+<div style="display: flex; justify-content: center;text-align: center; margin-bottom: 40px">
 
     <div class="col-md-12 col-xs-12">
         <div class="row">

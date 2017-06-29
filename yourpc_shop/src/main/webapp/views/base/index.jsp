@@ -39,13 +39,14 @@
         <spring:message code="label.Categories"/>
     </button>
     <ul class="dropdown-menu" role="menu" style="margin: 1%; padding: 0; list-style: none">
-        <li><span onclick="window.location.href='/all'">All</span></li>
-        <li><span onclick="window.location.href='/cpu'">CPU</span></li>
-        <li><span onclick="window.location.href='/gpu'">GPU</span></li>
-        <li><span onclick="window.location.href='/ram'">RAM</span></li>
-        <li><span onclick="window.location.href='/psu'">PSU</span></li>
-        <li><span onclick="window.location.href='/case'">Case</span></li>
-        <li><span onclick="window.location.href='/storage'">Storage</span></li>
+        <li><span onclick="window.location.href='/all'"><spring:message code="label.All"/></span></li>
+        <li><span onclick="window.location.href='/cpu'"><spring:message code="label.CPU"/></span></li>
+        <li><span onclick="window.location.href='/gpu'"><spring:message code="label.GPU"/></span></li>
+        <li><span onclick="window.location.href='/ram'"><spring:message code="label.RAM"/></span></li>
+        <li><span onclick="window.location.href='/psu'"><spring:message code="label.PSU"/></span></li>
+        <li><span onclick="window.location.href='/case'"><spring:message code="label.Case"/></span></li>
+        <li><span onclick="window.location.href='/storage'"><spring:message code="label.Storage"/></span></li>
+        <li><span onclick="window.location.href='/motherboard'"><spring:message code="label.Motherboard"/></span></li>
     </ul>
 </div>
 
