@@ -63,8 +63,7 @@
                 <img src="${item.pathImage}" alt="">
                 <h2><c:out value="${item.name}"/><p style="float: right">$<em>${item.price}</em></p></h2>
                 <sec:authorize access="isAuthenticated() && hasRole('ROLE_USER')">
-                    <button style="margin: auto; display: block;" class="add-to-cart"
-                            onclick="window.location.href='/addToCart/${item.id}'"><spring:message code="label.AddToCart"/>
+                    <button style="margin: auto; display: block;" class="add-to-cart" onclick="window.location.href='/addToCart/${item.id}'"><spring:message code="label.AddToCart"/>
                     </button>
                 </sec:authorize>
             </div>

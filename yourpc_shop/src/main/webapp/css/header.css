@@ -42,3 +42,15 @@ nav a {
 .container p {
     line-height: 200px;
 }
+
+li {
+    display: block;
+    float:left;
+}
+
+li span {
+    padding: 5px 45px 5px 15px;
+    text-decoration:none;
+    color:#666;
+    cursor: pointer;
+}
