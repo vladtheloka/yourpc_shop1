@@ -25,6 +25,7 @@
         });
     });
 </script>
+
 <div class="dropdown" style="float: left; padding-left: 5px">
     <button class="dropdown-toggle; btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">
         <spring:message code="label.Categories"/>
