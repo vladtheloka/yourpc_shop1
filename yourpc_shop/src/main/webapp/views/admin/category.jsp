@@ -6,7 +6,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
-<div class="container">
+<div class="container" style="margin-bottom: 40px; margin-top: 10px">
     <div class="panel">
         <div style="display: flex; justify-content: center ">
             <div class="form-group">

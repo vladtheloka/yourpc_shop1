@@ -15,7 +15,6 @@
             <input type="submit" value="<spring:message code="label.AddItem"/>"/>
         </form>
 
-
         <table id="myTable" class="table table-hover">
             <thead>
             <tr>

@@ -1,17 +1,14 @@
 package com.yourpc_shop.serviceimpl;
 
-import java.util.List;
-
-import com.yourpc_shop.validator.Validator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-
 import com.yourpc_shop.dao.CategoryDao;
 import com.yourpc_shop.dao.ItemDao;
 import com.yourpc_shop.entity.Category;
 import com.yourpc_shop.entity.Item;
 import com.yourpc_shop.service.CategoryService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CategoryServiceImpl implements CategoryService
@@ -20,18 +17,16 @@ public class CategoryServiceImpl implements CategoryService
 
     private final ItemDao itemDao;
 
-    private final Validator validator;
 
     @Autowired
-    public CategoryServiceImpl(CategoryDao categoryDao, ItemDao itemDao, @Qualifier("categoryValidator") Validator validator)
+    public CategoryServiceImpl(CategoryDao categoryDao, ItemDao itemDao)
     {
         this.categoryDao = categoryDao;
         this.itemDao = itemDao;
-        this.validator = validator;
     }
 
-    public void add(Category category){
-//        validator.validate(category);
+    public void add(Category category)
+    {
         categoryDao.save(category);
     }
 

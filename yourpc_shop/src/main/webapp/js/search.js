@@ -40,30 +40,3 @@ function search() {
         }
     })
 }
-
-function searchInDiv() {
-
-    $.ajax({
-        url: '/searchItem?' + $('input[name=csrf_name]').val() + "=" + $('input[name=csrf_value]').val(),
-        method: 'POST',
-        dataType: 'json',
-        contentType: 'application/json; charset=UTF-8',
-        data: $('#searchInList').val(),
-        success: function (res)
-        {
-            var but = document.createElement("button");
-            but.innerHTML = "Add to cart";
-            but.class = "add-to-cart";
-            but.style = "margin: auto; display: block;";
-            var divItems= '';
-            var add = 'Add to cart';
-            for(var i in res)
-            {
-                divItems += '<div class="items"><div class="item"><img src="' + res[i].pathImage + '"><h2>' + res[i].name +
-                    '<p style="float: right">' + '$' + '<em>' + res[i].price + '</em></p></h2>' + '</div></div>'
-            }
-            document.getElementById('searchDiv').innerHTML = divItems;
-            console.log(res);
-        }
-    })
-}
