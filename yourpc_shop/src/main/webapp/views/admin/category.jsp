@@ -32,6 +32,5 @@
        value="${_csrf.parameterName}" />
 <input type="hidden" name="csrf_value"
        value="${_csrf.token}" />
-
 <script src="<c:url value="/js/category.js"/>"></script>
 
