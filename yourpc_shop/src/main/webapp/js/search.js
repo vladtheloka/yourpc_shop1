@@ -1,22 +1,3 @@
-// function search() {
-//     var input, filter, table, tr, td, i;
-//     input = document.getElementById("search");
-//     filter = input.value.toUpperCase();
-//     table = document.getElementById("myTable");
-//     tr = table.getElementsByTagName("tr");
-//
-//     for (i = 0; i < tr.length; i++) {
-//         td = tr[i].getElementsByTagName("td")[1];
-//         if (td) {
-//             if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
-//                 tr[i].style.display = "";
-//             } else {
-//                 tr[i].style.display = "none";
-//             }
-//         }
-//     }
-// }
-
 function search() {
 
     $.ajax({
@@ -41,29 +22,16 @@ function search() {
     })
 }
 
-function searchInDiv() {
-
-    $.ajax({
-        url: '/searchItem?' + $('input[name=csrf_name]').val() + "=" + $('input[name=csrf_value]').val(),
-        method: 'POST',
-        dataType: 'json',
-        contentType: 'application/json; charset=UTF-8',
-        data: $('#searchInList').val(),
-        success: function (res)
-        {
-            var but = document.createElement("button");
-            but.innerHTML = "Add to cart";
-            but.class = "add-to-cart";
-            but.style = "margin: auto; display: block;";
-            var divItems= '';
-            var add = 'Add to cart';
-            for(var i in res)
-            {
-                divItems += '<div class="items"><div class="item"><img src="' + res[i].pathImage + '"><h2>' + res[i].name +
-                    '<p style="float: right">' + '$' + '<em>' + res[i].price + '</em></p></h2>' + '</div></div>'
-            }
-            document.getElementById('searchDiv').innerHTML = divItems;
-            console.log(res);
+$(function () {
+    $("#slider-range").slider({
+        range: true,
+        min: 0,
+        max: 1000,
+        values: [75, 300],
+        slide: function (event, ui) {
+            $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
         }
-    })
-}
+    });
+    $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+        " - $" + $("#slider-range").slider("values", 1));
+});

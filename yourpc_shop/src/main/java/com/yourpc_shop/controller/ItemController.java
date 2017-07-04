@@ -117,4 +117,10 @@ public class ItemController
     {
         return DtoUtilMapper.itemsToItemsDtos(itemService.searchItems(search));
     }
+
+    @PostMapping("/searchByPrice")
+    public @ResponseBody List<ItemDto>  searchByPrice(@RequestBody int min, @RequestBody int max)
+    {
+        return DtoUtilMapper.itemsToItemsDtos(itemService.searchByPrice(min, max));
+    }
 }

@@ -9,8 +9,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script  src="<c:url value="/js/index.js"/>"></script>
-<script  src="<c:url value="/js/search.js"/>"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+<script src="<c:url value="/js/index.js"/>"></script>
+<script src="<c:url value="/js/search.js"/>"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script type="text/javascript">
@@ -25,9 +26,31 @@
             flyToElement($(itemImg), $('.cart_anchor'));
         });
     });
+
+    $(function () {
+        $("#slider-range").slider({
+            range: true,
+            min: 0,
+            max: 500,
+            values: [75, 300],
+            slide: function (event, ui) {
+                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+            }
+        });
+        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
+            " - $" + $("#slider-range").slider("values", 1));
+    });
 </script>
 
-<div class="dropdown" style="float: left; padding-left: 5px">
+<div style="margin-bottom: 10px; width: 20%; float: right; padding-right: 10px">
+    <p>
+        <label for="amount">Price range:</label>
+        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+    </p>
+    <div id="slider-range"></div>
+</div>
+
+<div class="dropdown" style="float: left; padding-left: 10px">
     <button class="dropdown-toggle; btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">
         <spring:message code="label.Categories"/>
     </button>
@@ -53,7 +76,9 @@
                 <img src="${item.pathImage}" alt="">
                 <h2><c:out value="${item.name}"/><p style="float: right">$<em>${item.price}</em></p></h2>
                 <sec:authorize access="isAuthenticated() && hasRole('ROLE_USER')">
-                    <button style="margin: auto; display: block;" class="add-to-cart" onclick="window.location.href='/addToCart/${item.id}'"><spring:message code="label.AddToCart"/>
+                    <button style="margin: auto; display: block;" class="add-to-cart"
+                            onclick="window.location.href='/addToCart/${item.id}'"><spring:message
+                            code="label.AddToCart"/>
                     </button>
                 </sec:authorize>
             </div>

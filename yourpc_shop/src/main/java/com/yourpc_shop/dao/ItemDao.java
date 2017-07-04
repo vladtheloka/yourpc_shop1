@@ -55,5 +55,6 @@ public interface ItemDao extends JpaRepository<Item, Integer>
     @Query("select i from Item i where i.name like %:search%")
     List<Item> searchItems(@Param("search") String search);
 
-
+    @Query("select i from Item i where i.price between :min and :max")
+    List<Item> searchByPrice(@Param("min") int min, @Param("max") int max);
 }

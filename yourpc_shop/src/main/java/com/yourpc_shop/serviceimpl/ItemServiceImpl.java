@@ -163,6 +163,11 @@ public class ItemServiceImpl implements ItemService
     }
 
     @Override
+    public List<Item> searchByPrice(int min, int max) {
+        return itemDao.searchByPrice(min, max);
+    }
+
+    @Override
     public List<Item> searchItems(String search)
     {
         return itemDao.searchItems(search);

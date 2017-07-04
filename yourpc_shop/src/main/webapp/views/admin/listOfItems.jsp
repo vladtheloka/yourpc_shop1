@@ -4,14 +4,23 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type='text/javascript' src="<c:url value="/js/search.js"/>"></script>
 
 <div>
+    <div style="width: 20%; float: right; padding-right: 10px; margin-top: 10px">
+        <p>
+            <label for="amount">Price range:</label>
+            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+        </p>
+        <div id="slider-range"></div>
+    </div>
     <div class="container">
 
-        <form action="<c:url value="/item"/>">
+        <form action="<c:url value="/item"/>" style="float: left; margin-top: 10px">
             <input type="submit" value="<spring:message code="label.AddItem"/>"/>
         </form>
 

@@ -24,6 +24,6 @@ public interface ItemService
     Page<Item> allStorage(Pageable pageable);
     Page<Item> allMotherboard(Pageable pageable);
     void update(Item item);
-
+    List<Item> searchByPrice(int min, int max);
     List<Item> searchItems(String search);
 }
