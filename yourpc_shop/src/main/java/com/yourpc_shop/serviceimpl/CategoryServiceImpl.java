@@ -17,7 +17,6 @@ public class CategoryServiceImpl implements CategoryService
 
     private final ItemDao itemDao;
 
-
     @Autowired
     public CategoryServiceImpl(CategoryDao categoryDao, ItemDao itemDao)
     {
@@ -25,8 +24,7 @@ public class CategoryServiceImpl implements CategoryService
         this.itemDao = itemDao;
     }
 
-    public void add(Category category)
-    {
+    public void add(Category category){
         categoryDao.save(category);
     }
 

@@ -1,12 +1,13 @@
 package com.yourpc_shop.dao;
 
 import com.yourpc_shop.entity.Billable;
-import com.yourpc_shop.entity.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+
+import com.yourpc_shop.entity.Item;
 
 import java.util.List;
 import java.util.Set;
@@ -53,7 +54,6 @@ public interface ItemDao extends JpaRepository<Item, Integer>
 
     @Query("select i from Item i where i.name like %:search%")
     List<Item> searchItems(@Param("search") String search);
-
 
 
 }

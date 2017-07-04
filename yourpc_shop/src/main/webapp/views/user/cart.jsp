@@ -36,7 +36,7 @@
                     <td><c:out value="${item.category}"/></td>
                     <td>
                         <label>
-                            <input type="number" name="itemQuantity" value="1" min="1">
+                            <input type="number" name="itemQuantity" value="${item.quantity}" min="1">
                         </label>
                     </td>
                     <td><a href="/deleteFromCart/${userCart.id}/${item.id}"><spring:message code="label.Delete"/></a>

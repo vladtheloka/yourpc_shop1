@@ -8,10 +8,9 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script src="<c:url value="/js/index.js"/>"></script>
-<script src="<c:url value="/js/search.js"/>"></script>
+<script type='text/javascript' src="<c:url value="/js/index.js"/>"></script>
+<script type='text/javascript' src="<c:url value="/js/search.js"/>"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -25,7 +24,6 @@
             flyToElement($(itemImg), $('.cart_anchor'));
         });
     });
-
 </script>
 <div class="dropdown" style="float: left; padding-left: 5px">
     <button class="dropdown-toggle; btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -43,7 +41,6 @@
     </ul>
 </div>
 
-
 <div class="wrapper">
     <span><i class="cart_anchor"></i></span>
 
@@ -54,9 +51,7 @@
                 <img src="${item.pathImage}" alt="">
                 <h2><c:out value="${item.name}"/><p style="float: right">$<em>${item.price}</em></p></h2>
                 <sec:authorize access="isAuthenticated() && hasRole('ROLE_USER')">
-                    <button style="margin: auto; display: block;" class="add-to-cart"
-                            onclick="window.location.href='/addToCart/${item.id}'"><spring:message
-                            code="label.AddToCart"/>
+                    <button style="margin: auto; display: block;" class="add-to-cart" onclick="window.location.href='/addToCart/${item.id}'"><spring:message code="label.AddToCart"/>
                     </button>
                 </sec:authorize>
             </div>
