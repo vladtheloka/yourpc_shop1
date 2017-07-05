@@ -35,11 +35,12 @@
             <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
         </p>
         <label for="price-min">Min:</label>
-        <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000" onchange="changeLabel()">
+        <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000" onchange="changeLabel()"
+               oninput="searchPrices()">
         <label for="price-max">Max:</label>
-        <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000" onchange="changeLabel()">
+        <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000" onchange="changeLabel()"
+               oninput="searchPrices()">
     </div>
-    <button onclick="searchPrices()">Search</button>
     <input style="margin-top: 5px" type="text" class="form-control" id="searchIn" oninput="searchItems()"
            placeholder="Search..."/>
 </div>
