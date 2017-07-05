@@ -137,7 +137,6 @@ function saveCategoryUpdates(categoryId) {
         method: 'PUT',
         data: newName + '_' + categoryId,
         success: function (res) {
-            console.log(newName);
             parseResultFromDb(res);
         },
         error: function (err) {

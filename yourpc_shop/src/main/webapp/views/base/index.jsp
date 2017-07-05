@@ -43,11 +43,13 @@
 </script>
 
 <div style="margin-bottom: 10px; width: 20%; float: right; padding-right: 10px">
-    <p>
-        <label for="amount">Price range:</label>
-        <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-    </p>
-    <div id="slider-range"></div>
+    <%--<p>--%>
+        <%--<label for="amount">Price range:</label>--%>
+        <%--<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">--%>
+    <%--</p>--%>
+    <%--<div id="slider-range"></div>--%>
+        <input type="text" class="form-control" id="searchIn" oninput="searchItems()"
+               placeholder="Search..."/>
 </div>
 
 <div class="dropdown" style="float: left; padding-left: 10px">
@@ -111,3 +113,7 @@
     </div>
 </div>
 
+<input type="hidden" name="csrf_name"
+       value="${_csrf.parameterName}"/>
+<input type="hidden" name="csrf_value"
+       value="${_csrf.token}"/>
