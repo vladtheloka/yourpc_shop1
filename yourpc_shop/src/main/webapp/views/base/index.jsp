@@ -26,33 +26,25 @@
             flyToElement($(itemImg), $('.cart_anchor'));
         });
     });
-
-    $(function () {
-        $("#slider-range").slider({
-            range: true,
-            min: 0,
-            max: 500,
-            values: [75, 300],
-            slide: function (event, ui) {
-                $("#amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
-            }
-        });
-        $("#amount").val("$" + $("#slider-range").slider("values", 0) +
-            " - $" + $("#slider-range").slider("values", 1));
-    });
 </script>
 
-<div style="margin-bottom: 10px; width: 20%; float: right; padding-right: 10px">
-    <%--<p>--%>
-        <%--<label for="amount">Price range:</label>--%>
-        <%--<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">--%>
-    <%--</p>--%>
-    <%--<div id="slider-range"></div>--%>
-        <input type="text" class="form-control" id="searchIn" oninput="searchItems()"
-               placeholder="Search..."/>
+<div style="margin-bottom: 10px; margin-top: 10px; width: 20%; float: right; padding-right: 10px">
+    <div data-role="rangeslider">
+        <p>
+            <label for="amount">Price range:</label>
+            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
+        </p>
+        <label for="price-min">Min:</label>
+        <input type="range" name="price-min" id="price-min" value="200" min="0" max="1000" onchange="changeLabel()">
+        <label for="price-max">Max:</label>
+        <input type="range" name="price-max" id="price-max" value="800" min="0" max="1000" onchange="changeLabel()">
+    </div>
+    <button onclick="searchPrices()">Search</button>
+    <input style="margin-top: 5px" type="text" class="form-control" id="searchIn" oninput="searchItems()"
+           placeholder="Search..."/>
 </div>
 
-<div class="dropdown" style="float: left; padding-left: 10px">
+<div class="dropdown" style="float: left; padding-left: 10px; margin-top: 10px;">
     <button class="dropdown-toggle; btn btn-default" data-toggle="dropdown" role="button" aria-expanded="false">
         <spring:message code="label.Categories"/>
     </button>
@@ -69,7 +61,7 @@
 </div>
 
 <div class="wrapper">
-    <span><i class="cart_anchor"></i></span>
+    <span style="margin-top: 90px"><i class="cart_anchor"></i></span>
 
     <div class="clear"></div>
     <div id="searchDiv" class="items">

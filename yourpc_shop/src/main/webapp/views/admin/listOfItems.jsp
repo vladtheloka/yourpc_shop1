@@ -11,13 +11,6 @@
 <script type='text/javascript' src="<c:url value="/js/search.js"/>"></script>
 
 <div>
-    <div style="width: 20%; float: right; padding-right: 10px; margin-top: 10px">
-        <p>
-            <label for="amount">Price range:</label>
-            <input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-        </p>
-        <div id="slider-range"></div>
-    </div>
     <div class="container">
 
         <form action="<c:url value="/item"/>" style="float: left; margin-top: 10px">
