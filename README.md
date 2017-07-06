@@ -9,7 +9,8 @@ Functionalities implemented:
 - view all items with photos
 - filter items by category
 - search items by name
-- sort items by name asc/desc
+- filter items by price
+- sort items by name/price asc/desc
 - pagination(change number of items per page)
 - add/delete items to/from cart
 - view cart 
