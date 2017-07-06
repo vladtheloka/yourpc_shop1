@@ -116,47 +116,6 @@ public class ItemServiceImpl implements ItemService
     }
 
     @Override
-    public Page<Item> allCpu(Pageable pageable)
-    {
-        return itemDao.allCpu(pageable);
-    }
-
-    @Override
-    public Page<Item> allGpu(Pageable pageable)
-    {
-        return itemDao.allGpu(pageable);
-    }
-
-    @Override
-    public Page<Item> allRam(Pageable pageable)
-    {
-        return itemDao.allRam(pageable);
-    }
-
-    @Override
-    public Page<Item> allPsu(Pageable pageable)
-    {
-        return itemDao.allPsu(pageable);
-    }
-
-    @Override
-    public Page<Item> allCase(Pageable pageable)
-    {
-        return itemDao.allCase(pageable);
-    }
-
-    @Override
-    public Page<Item> allStorage(Pageable pageable)
-    {
-        return itemDao.allStorage(pageable);
-    }
-
-    @Override
-    public Page<Item> allMotherboard(Pageable pageable) {
-        return itemDao.allMotherboard(pageable);
-    }
-
-    @Override
     public void update(Item item)
     {
         itemDao.save(item);

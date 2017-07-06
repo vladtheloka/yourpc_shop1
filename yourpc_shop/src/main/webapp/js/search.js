@@ -85,6 +85,42 @@ function searchPrices() {
 
 }
 
+
+function searchCategories() {
+    var categories = [];
+    $.ajax({
+        url: '/itemSearch?' + $('input[name=csrf_name]').val() + "=" + $('input[name=csrf_value]').val(),
+        method: 'GET',
+        success: function (res) {
+            for (var i in res) {
+                categories.push(res[i].category.name);
+            }
+            var div, div_2, spanText;
+
+            $("span.mySpan").click(function () {
+                spanText = $(this).text();
+                div = document.getElementById("searchDiv");
+                div_2 = div.getElementsByTagName("div");
+
+                for (i = 0; i < div_2.length; i++) {
+                    for (var j = 0; j < categories.length; j++) {
+                        if (categories[j] == spanText || spanText == "All") {
+                            div_2[j].style.display = "";
+                        } else {
+                            div_2[j].style.display = "none";
+                        }
+                    }
+                }
+            });
+        },
+        error: function (err) {
+            console.log(err)
+        }
+    })
+
+
+}
+
 function changeLabel() {
     $("#amount").val("$" + document.getElementById("price-min").value + " - $" + document.getElementById("price-max").value);
 

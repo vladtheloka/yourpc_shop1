@@ -16,13 +16,6 @@ public interface ItemService
     List<Item> getAll();
     Item itemWithUsers(int id);
     Page<Item> findAllPages(Pageable pageable);
-    Page<Item> allCpu(Pageable pageable);
-    Page<Item> allGpu(Pageable pageable);
-    Page<Item> allRam(Pageable pageable);
-    Page<Item> allPsu(Pageable pageable);
-    Page<Item> allCase(Pageable pageable);
-    Page<Item> allStorage(Pageable pageable);
-    Page<Item> allMotherboard(Pageable pageable);
     void update(Item item);
     List<Item> searchByPrice(int min, int max);
     List<Item> searchItems(String search);
