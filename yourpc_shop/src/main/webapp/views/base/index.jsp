@@ -97,9 +97,12 @@
                     <ul class="dropdown-menu">
                         <custom:sort innerHtml="Name asc" paramValue="name"/>
                         <custom:sort innerHtml="Name desc" paramValue="name,desc"/>
+                        <custom:sort innerHtml="Price asc" paramValue="price"/>
+                        <custom:sort innerHtml="Price desc" paramValue="price,desc"/>
                     </ul>
                 </div>
             </div>
+
             <div class="col-md-8 col-xs-12 text-center">
                 <custom:pageable page="${items}" cell="<li></li>" container="<ul class='pagination'></ul>"/>
             </div>

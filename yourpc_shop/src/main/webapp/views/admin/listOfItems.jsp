@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<div style="display: flex; justify-content: center;text-align: center; margin-bottom: 40px">
+<div style="display: flex; justify-content: center;text-align: center; margin-bottom: 60px">
 
     <div class="col-md-12 col-xs-12">
         <div class="row">
@@ -63,6 +63,8 @@
                     <ul class="dropdown-menu">
                         <custom:sort innerHtml="Name asc" paramValue="name"/>
                         <custom:sort innerHtml="Name desc" paramValue="name,desc"/>
+                        <custom:sort innerHtml="Price asc" paramValue="price"/>
+                        <custom:sort innerHtml="Price desc" paramValue="price,desc"/>
                     </ul>
                 </div>
             </div>
