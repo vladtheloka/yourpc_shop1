@@ -40,7 +40,7 @@ public class UserController
         this.validator = validator;
     }
 
-    @GetMapping("/signUp")
+    @GetMapping({"/signUp", "/login"})
     public String signUp(Model model)
     {
         model.addAttribute("user", new User());
@@ -80,6 +80,7 @@ public class UserController
             {
                 model.addAttribute("addressException", e.getMessage());
             }
+
             return "views-user-signUp";
         }
 

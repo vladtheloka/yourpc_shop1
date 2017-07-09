@@ -1,17 +1,28 @@
-function search() {
-
+function searchInTable() {
+    var names = [];
     $.ajax({
-        url: '/searchItem?' + $('input[name=csrf_name]').val() + "=" + $('input[name=csrf_value]').val(),
-        method: 'POST',
-        dataType: 'json',
-        contentType: 'application/json; charset=UTF-8',
-        data: $('#searchIn').val(),
+        url: '/itemSearch?' + $('input[name=csrf_name]').val() + "=" + $('input[name=csrf_value]').val(),
+        method: 'GET',
         success: function (res) {
-            var items = '';
             for (var i in res) {
-                items += '<tr><td>' + res[i].id + '</td><td>' + res[i].name + '</td><td>' + res[i].price + '</td><td>' + res[i].content + '</td><td>' + res[i].category.name + '<td><img src="' + res[i].pathImage + '">' + '</td></tr>'
+                names.push(res[i].name);
             }
-            document.getElementById('searchResult').innerHTML = items;
+
+            var tr = $("table tbody tr");
+            var input, filter;
+            input = document.getElementById("searchIn");
+            filter = input.value;
+            tr.each(function (i) {
+                if (names[i].match(new RegExp(filter, 'gi'))) {
+                    tr[i].style.display = "";
+                }
+                else {
+                    tr[i].style.display = "none";
+                }
+            });
+        },
+        error: function (err) {
+            console.log(err)
         }
     })
 }
@@ -25,11 +36,9 @@ function searchItems() {
             for (var i in res) {
                 names.push(res[i].name);
             }
-            console.log(names);
-            var input, filter, div, div_2, range_min, range_max;
+
+            var input, filter, div, div_2;
             input = document.getElementById("searchIn");
-            range_min = document.getElementById("price-min");
-            range_max = document.getElementById("price-max");
             filter = input.value;
             div = document.getElementById("searchDiv");
             div_2 = div.getElementsByTagName("div");

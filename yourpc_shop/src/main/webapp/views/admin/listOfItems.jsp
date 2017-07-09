@@ -10,6 +10,10 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type='text/javascript' src="<c:url value="/js/search.js"/>"></script>
 
+<div style="float: right">
+<input type="text" class="form-control" id="searchIn" oninput="searchInTable()"
+       placeholder="Search..."/>
+</div>
 <div>
     <div class="container">
 
@@ -18,7 +22,7 @@
         </form>
 
 
-        <table id="myTable" class="table table-hover">
+        <table class="table table-hover">
             <thead>
             <tr>
                 <th>Item Id</th>
@@ -28,9 +32,6 @@
                 <th>Category</th>
                 <th>Image</th>
                 <th colspan=2>Action</th>
-                <th><input type="text" class="form-control" id="searchIn" oninput="search()"
-                           placeholder="Search..."/>
-                </th>
             </tr>
             </thead>
             <tbody id="searchResult">
