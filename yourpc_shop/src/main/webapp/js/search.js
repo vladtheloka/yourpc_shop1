@@ -7,7 +7,6 @@ function searchInTable() {
             for (var i in res) {
                 names.push(res[i].name);
             }
-
             var tr = $("table tbody tr");
             var input, filter;
             input = document.getElementById("searchIn");
