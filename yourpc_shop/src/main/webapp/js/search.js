@@ -36,7 +36,6 @@ function searchItems() {
             for (var i in res) {
                 names.push(res[i].name);
             }
-
             var input, filter, div, div_2;
             input = document.getElementById("searchIn");
             filter = input.value;
