@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="ElectroShop:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="ElectricrShop-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="ElectroShop:war exploded" />
+    </root>
+  </artifact>
+</component>
