@@ -10,7 +10,7 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type='text/javascript' src="<c:url value="/js/search.js"/>"></script>
 
-<div style="float: right">
+<div style="float: right; margin-top: 10px">
     <input type="text" class="form-control" id="searchIn" oninput="searchInTable()"
            placeholder="Search..."/>
 </div>

@@ -9,21 +9,20 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="<c:url value="/js/signUp.js"/>"></script>
 
-<div style="color: red; text-align: center">${exception}</div>
-<div style="color: red; text-align: center">${emailException}</div>
-<div style="color: red; text-align: center">${usernameException}</div>
-<div style="color: red; text-align: center">${passwordException}</div>
-<div style="color: red; text-align: center">${addressException}</div>
-
 <div class="form-wrap">
     <div class="tabs">
-        <h3 class="signup-tab"><a class="active" href="#signup-tab-content"><spring:message code="label.Sign_up"/></a></h3>
-        <h3 class="login-tab"><a href="#login-tab-content"><spring:message code="label.Login"/></a></h3>
-    </div><!--.tabs-->
+        <h3 class="signup-tab"><a href="#signup-tab-content"><spring:message code="label.Sign_up"/></a></h3>
+        <h3 class="login-tab"><a class="active" href="#login-tab-content"><spring:message code="label.Login"/></a></h3>
+    </div>
 
     <div class="tabs-content">
-        <div id="signup-tab-content" class="active">
+        <div id="signup-tab-content">
             <form:form modelAttribute="user" class="signup-form" method="post">
+                <div style="color: red; text-align: center">${emailException}</div>
+                <div style="color: red; text-align: center">${usernameException}</div>
+                <div style="color: red; text-align: center">${passwordException}</div>
+                <div style="color: red; text-align: center">${addressException}</div>
+
                 <form:input path="email" type="text" class="input" id="user_email" autocomplete="off"
                             placeholder="Email"/>
                 <form:input path="name" type="text" class="input" id="user_name" autocomplete="off"
@@ -36,8 +35,9 @@
             </form:form>
         </div>
 
-        <div id="login-tab-content">
+        <div id="login-tab-content" class="active">
             <form class="login-form" action="<c:url value="/login"/>" method="post">
+                <div style="color: red; text-align: center">${exception}</div>
                 <input name="username" type="text" class="input" id="user_login" autocomplete="off"
                        placeholder="Email or Username">
                 <input name="password" type="password" class="input" id="user_pass" autocomplete="off"

@@ -1,7 +1,9 @@
 package com.yourpc_shop.controller;
 
 import com.yourpc_shop.entity.Billable;
+import com.yourpc_shop.entity.User;
 import com.yourpc_shop.service.MailSenderService;
+import com.yourpc_shop.service.UserService;
 import com.yourpc_shop.validator.Validator;
 import com.yourpc_shop.validator.user.UserValidationMessages;
 import com.yourpc_shop.validator.userLoginValidation.UserLoginValidationMessages;
@@ -14,9 +16,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
-import com.yourpc_shop.entity.User;
-import com.yourpc_shop.service.UserService;
 
 import java.security.Principal;
 import java.util.Set;
@@ -40,7 +39,7 @@ public class UserController
         this.validator = validator;
     }
 
-    @GetMapping({"/signUp", "/login"})
+    @GetMapping("/signUp")
     public String signUp(Model model)
     {
         model.addAttribute("user", new User());
