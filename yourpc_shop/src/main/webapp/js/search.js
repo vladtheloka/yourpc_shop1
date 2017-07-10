@@ -55,8 +55,6 @@ function searchItems() {
             console.log(err)
         }
     })
-
-
 }
 
 function searchPrices() {

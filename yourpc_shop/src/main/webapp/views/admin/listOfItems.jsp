@@ -3,7 +3,6 @@
 <%@ taglib prefix="custom" uri="/WEB-INF/custom.tld" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -12,8 +11,8 @@
 <script type='text/javascript' src="<c:url value="/js/search.js"/>"></script>
 
 <div style="float: right">
-<input type="text" class="form-control" id="searchIn" oninput="searchInTable()"
-       placeholder="Search..."/>
+    <input type="text" class="form-control" id="searchIn" oninput="searchInTable()"
+           placeholder="Search..."/>
 </div>
 <div>
     <div class="container">
@@ -21,7 +20,6 @@
         <form action="<c:url value="/item"/>" style="float: left; margin-top: 10px">
             <input type="submit" value="<spring:message code="label.AddItem"/>"/>
         </form>
-
 
         <table class="table table-hover">
             <thead>
