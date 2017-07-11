@@ -1,9 +1,8 @@
 package com.yourpc_shop.serviceimpl;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.List;
-
+import com.yourpc_shop.dao.ItemDao;
+import com.yourpc_shop.entity.Item;
+import com.yourpc_shop.service.ItemService;
 import com.yourpc_shop.validator.Validator;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +10,11 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-
-import com.yourpc_shop.dao.ItemDao;
-import com.yourpc_shop.entity.Item;
-import com.yourpc_shop.service.ItemService;
-
 import org.springframework.web.multipart.MultipartFile;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.List;
 
 @Service
 public class ItemServiceImpl implements ItemService
@@ -35,10 +33,10 @@ public class ItemServiceImpl implements ItemService
     public void add(Item item, MultipartFile multipartFile) throws Exception
     {
         validator.validate(item);
-        String path = "E:\\Downloads\\apache-tomcat-8.0.43\\resources\\" +
-                item.getName() + "\\" + multipartFile.getOriginalFilename();
+        String path = "E:" + File.separator + "Downloads" + File.separator + "apache-tomcat-8.0.43" + File.separator + "resources" + File.separator +
+                item.getName() + File.separator + multipartFile.getOriginalFilename();
 
-        item.setPathImage("resources/" + item.getName() + "/" + multipartFile.getOriginalFilename());
+        item.setPathImage("resources" + File.separator + item.getName() + File.separator + multipartFile.getOriginalFilename());
 
         File file = new File(path);
 
@@ -64,10 +62,10 @@ public class ItemServiceImpl implements ItemService
 
     public void update(Item item, MultipartFile multipartFile)
     {
-        String path = "E:\\Downloads\\apache-tomcat-8.0.43\\resources\\" +
-                item.getName() + "\\" + multipartFile.getOriginalFilename();
+        String path = "E:" + File.separator + "Downloads" + File.separator + "apache-tomcat-8.0.43" + File.separator + "resources" + File.separator +
+                item.getName() + File.separator + multipartFile.getOriginalFilename();
 
-        item.setPathImage("resources/" + item.getName() + "/" + multipartFile.getOriginalFilename());
+        item.setPathImage("resources" + File.separator + item.getName() + File.separator + multipartFile.getOriginalFilename());
 
         File file = new File(path);
 
@@ -77,8 +75,8 @@ public class ItemServiceImpl implements ItemService
             try
             {
                 FileUtils.cleanDirectory
-                        (new File(System.getProperty("catalina.home") + "/resources/"
-                                + item.getName() + "/"));
+                        (new File(System.getProperty("catalina.home") + File.separator +"resources" + File.separator
+                                + item.getName() + File.separator));
             }
             catch (IOException e)
             {
