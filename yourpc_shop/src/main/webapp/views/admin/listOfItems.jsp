@@ -10,16 +10,17 @@
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script type='text/javascript' src="<c:url value="/js/search.js"/>"></script>
 
-<div style="float: right; margin-top: 10px">
-    <input type="text" class="form-control" id="searchIn" oninput="searchInTable()"
-           placeholder="Search..."/>
-</div>
 <div>
     <div class="container">
 
         <form action="<c:url value="/item"/>" style="float: left; margin-top: 10px">
             <input type="submit" value="<spring:message code="label.AddItem"/>"/>
         </form>
+
+        <div style="float: right; margin-top: 10px">
+            <input type="text" class="form-control" id="searchIn" oninput="searchInTable()"
+                   placeholder="Search..."/>
+        </div>
 
         <table class="table table-hover">
             <thead>
