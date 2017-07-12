@@ -102,12 +102,6 @@ public class ItemServiceImpl implements ItemService
     }
 
     @Override
-    public Item itemWithUsers(int id)
-    {
-        return itemDao.itemWithUsers(id);
-    }
-
-    @Override
     public Page<Item> findAllPages(Pageable pageable)
     {
         return itemDao.findAll(pageable);
@@ -117,16 +111,5 @@ public class ItemServiceImpl implements ItemService
     public void update(Item item)
     {
         itemDao.save(item);
-    }
-
-    @Override
-    public List<Item> searchByPrice(int min, int max) {
-        return itemDao.searchByPrice(min, max);
-    }
-
-    @Override
-    public List<Item> searchItems(String search)
-    {
-        return itemDao.searchItems(search);
     }
 }

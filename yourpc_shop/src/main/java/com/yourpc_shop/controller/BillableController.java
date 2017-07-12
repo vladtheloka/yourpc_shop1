@@ -125,7 +125,6 @@ public class BillableController {
             itemService.update(item);
         }
         billableService.buy(Integer.parseInt(principal.getName()));
-        System.out.println(itemQuantity);
         return "redirect:/profile";
     }
 }

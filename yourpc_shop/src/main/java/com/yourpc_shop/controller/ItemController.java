@@ -1,7 +1,5 @@
 package com.yourpc_shop.controller;
 
-import com.yourpc_shop.dto.DtoUtilMapper;
-import com.yourpc_shop.dto.ItemDto;
 import com.yourpc_shop.editors.CategoryEditor;
 import com.yourpc_shop.entity.Category;
 import com.yourpc_shop.entity.Item;
@@ -16,8 +14,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 @Controller
 public class ItemController
@@ -110,17 +106,5 @@ public class ItemController
     {
         model.addAttribute("items", itemService.findAllPages(pageable));
         return "views-admin-listOfItems";
-    }
-
-    @PostMapping("/searchItem")
-    public @ResponseBody List<ItemDto> searchItems(@RequestBody String search)
-    {
-        return DtoUtilMapper.itemsToItemsDtos(itemService.searchItems(search));
-    }
-
-    @PostMapping("/searchByPrice")
-    public @ResponseBody List<ItemDto>  searchByPrice(@RequestBody int min, @RequestBody int max)
-    {
-        return DtoUtilMapper.itemsToItemsDtos(itemService.searchByPrice(min, max));
     }
 }

@@ -25,10 +25,9 @@
                     <c:out value="${item.name}" /><br  />
                     </c:forEach>
                 </td>
-                <td><c:out value="${billable.price}" /></td></td>
+                <td><c:out value="${billable.price}" /></td>
             </tr>
             </tbody>
         </table>
     </div>
 </div>
-

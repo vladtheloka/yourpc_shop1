@@ -1,11 +1,11 @@
 package com.yourpc_shop.service;
 
-import java.util.List;
-
 import com.yourpc_shop.entity.Item;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 public interface ItemService
 {
@@ -14,9 +14,6 @@ public interface ItemService
     void update(Item item, MultipartFile multipartFile);
     Item getOne(int id);
     List<Item> getAll();
-    Item itemWithUsers(int id);
     Page<Item> findAllPages(Pageable pageable);
     void update(Item item);
-    List<Item> searchByPrice(int min, int max);
-    List<Item> searchItems(String search);
 }

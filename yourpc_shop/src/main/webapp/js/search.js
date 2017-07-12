@@ -86,8 +86,6 @@ function searchPrices() {
             console.log(err)
         }
     })
-
-
 }
 
 
@@ -122,11 +120,8 @@ function searchCategories() {
             console.log(err)
         }
     })
-
-
 }
 
 function changeLabel() {
     $("#amount").val("$" + document.getElementById("price-min").value + " - $" + document.getElementById("price-max").value);
-
 }
