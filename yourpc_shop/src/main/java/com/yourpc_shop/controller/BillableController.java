@@ -78,7 +78,7 @@ public class BillableController {
         billable.setId(id);
         billableService.update(billable);
         model.addAttribute("billables", billableService.getAll());
-        return "redirect:/";
+        return "redirect:/listOfBillables";
     }
 
     @GetMapping("/billableDetails/{id}")

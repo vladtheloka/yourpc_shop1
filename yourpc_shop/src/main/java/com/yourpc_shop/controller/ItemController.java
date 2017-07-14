@@ -98,7 +98,7 @@ public class ItemController
         {
             itemService.update(item, image);
         }
-        return "redirect:/";
+        return "redirect:/listOfItems";
     }
 
     @GetMapping("/listOfItems")
