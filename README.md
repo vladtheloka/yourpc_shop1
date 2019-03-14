@@ -1,7 +1,7 @@
 Simple shopping cart appilcation
 
 Functionalities implemented:
--> User regitration, authentification and authorization(Sign Up, Login/Logout)
+-> User registration, authentification and authorization(Sign Up, Login/Logout)
 
 -> Localization(en/ua)
 
